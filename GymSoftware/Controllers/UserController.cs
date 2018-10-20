@@ -10,6 +10,7 @@ namespace GymSoftware.Controllers
     {
         public ActionResult UserRegistration()
         {
+
             return View();
         }
     }
