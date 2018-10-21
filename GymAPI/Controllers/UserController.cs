@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommonUtility;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +11,12 @@ namespace GymAPI.Controllers
 {
     public class UserController : ApiController
     {
-
+        UserService _service = new UserService();
+        [HttpPost]
+        public string UserRegistration(UserModel Registration)
+        {
+            var result = _service.UserRegistration(Registration);
+            return result;
+        }
     }
 }

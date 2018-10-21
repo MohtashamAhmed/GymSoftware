@@ -18,7 +18,7 @@ namespace Service
             return cn;
         }
 
-        public void ExecuteCommand(string Name, Dictionary<string, SqlParameter> procParameters)
+        public int ExecuteCommand(string Name, Dictionary<string, SqlParameter> procParameters)
         {
             var sqlCon = GetConnection("");
             SqlCommand cmd = new SqlCommand(Name, sqlCon);
@@ -31,11 +31,12 @@ namespace Service
                 }
             }
             int rc = cmd.ExecuteNonQuery();
+            return rc;
         }
 
-        public DataSet ExecuteQuery(string Name, Dictionary<string, SqlParameter> procParameters)
+        public DataTable ExecuteQuery(string Name, Dictionary<string, SqlParameter> procParameters)
         {
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             var sqlCon = GetConnection("");
             SqlCommand cmd = new SqlCommand(Name, sqlCon);
             if (procParameters != null && procParameters.Count > 0)
@@ -46,8 +47,8 @@ namespace Service
                 }
             }
             SqlDataAdapter Adapter = new SqlDataAdapter(cmd);
-            Adapter.Fill(ds);
-            return ds;
+            Adapter.Fill(dt);
+            return dt;
         }
     }
 }

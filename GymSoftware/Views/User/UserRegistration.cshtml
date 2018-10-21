@@ -19,8 +19,8 @@
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" placeholder="John doe">
-                                        <small class="form-control-feedback"> This is inline help </small>
+                                        <input type="text" class="form-control" placeholder="Enter First Name">
+                                        @*<small class="form-control-feedback"> This is inline help </small>*@
                                     </div>
                                 </div>
                             </div>
@@ -29,8 +29,8 @@
                                 <div class="form-group has-danger row">
                                     <label class="control-label text-right col-md-3">Last Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control form-control-danger" placeholder="12n">
-                                        <small class="form-control-feedback"> This field has error. </small>
+                                        <input type="text" class="form-control form-control-danger" placeholder="Enter Last Name">
+                                        @*<small class="form-control-feedback"> This field has error. </small>*@
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <!--/span-->
                         </div>
                         <!--/row-->
-                        <div class="row">
+                        @*<div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Category</label>
@@ -75,108 +75,139 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Membership</label>
-                                    <div class="col-md-9">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio3" name="member" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio3">Free</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio4" name="member" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio4">Paid</label>
-                                        </div>
+                            </div>*@
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Membership</label>
+                                <div class="col-md-9">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio3" name="member" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio3">Free</label>
                                     </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <h3 class="box-title">Address</h3>
-                        <hr class="m-t-0 m-b-40">
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Address 1</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Address 2</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio4" name="member" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio4">Paid</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">City</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">State</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Post Code</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Country</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control custom-select">
-                                            <option>Country 1</option>
-                                            <option>Country 2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                        <!--/span-->
                     </div>
-                    <hr>
-                    <div class="form-actions">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button type="submit" class="btn btn-success">Submit</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
-                                    </div>
+                    <h3 class="box-title">Address</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Address 1</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6"> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Address 2</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">City</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">State</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Post Code</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3">Country</label>
+                                <div class="col-md-9">
+                                    <select class="form-control custom-select">
+                                        <option>Country 1</option>
+                                        <option>Country 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">EmailID</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button id="btnGetData" type="button" class="btn btn-outline-primary rounded-0">Register</button>
+                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> </div>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+        $(document).ready(function () {
+            //var apiBaseUrl = "http://localhost:54874//";
+            $('#btnGetData').click(function () {
+                $.ajax({
+                    url: 'http://localhost:1180/api/User/UserRegistration/',
+                    type: 'POST',
+                    data: $('form#btnGetData').serialize(),
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            });
+        });
+</script>
+
+
