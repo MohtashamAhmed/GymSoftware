@@ -10,6 +10,7 @@ namespace CommonUtility
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get; set; }
         public string Gender { get; set; }
         public string DateofBirth { get; set; }
         public string Membership { get; set; }
@@ -19,5 +20,6 @@ namespace CommonUtility
         public string State { get; set; }
         public string Postcode { get; set; }
         public string EmailID { get; set; }
+        public string MobileNo { get; set; }
     }
 }

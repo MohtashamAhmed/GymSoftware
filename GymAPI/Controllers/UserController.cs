@@ -18,5 +18,12 @@ namespace GymAPI.Controllers
             var result = _service.UserRegistration(Registration);
             return result;
         }
+        [HttpGet]
+        public List<UserModel> GetAllUser(string FullName , string MobileNo)
+        {
+            var result = _service.GetAllUser( FullName, MobileNo);
+            return result;
+        }
     }
+
 }
