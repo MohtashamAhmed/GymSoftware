@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CommonUtility
 {
-    public class Dashboard
+    public class DashboardModel
     {
         public string MonthlySales { get; set; }
         public string QuaterlySales { get; set; }
