@@ -46,6 +46,7 @@ namespace Service
                 return "Not Added";
             }
         }
+
         public List<UserModel> GetAllUser (string Name , string MobileNo)
         {
             UserModel UM = new UserModel();
@@ -72,13 +73,19 @@ namespace Service
             }
             return UserList;
         }
-        
-    }
-    public string Dashboard(DashboardModel DM)
-    {
-        Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-        Parameter["monthlysales"] = new SqlParameter("monthlysales", DM.MonthlySales);
-        Parameter["quaterlysales"] = new SqlParameter("quaterlysales", DM.QuaterlySales);
-        Parameter["yearlysales"] = new SqlParameter("yearlysales", DM.YearlySales);
-    }
+
+        public DashboardModel DashboardDetails()
+        {
+            DashboardModel dash = new DashboardModel();
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            var res = _GenClass.ExecuteQuery("", Parameter);
+            DataRow row = res.Rows[0];
+            dash.MonthlySales = row["MonthlySales"].ToString();
+            dash.QuaterlySales = row["QuaterlySales"].ToString();
+            dash.YearlySales = row["YearlySales"].ToString();
+            return dash;
+        }
+
+    }    
+
 }
