@@ -135,6 +135,19 @@ namespace Service
             return BatchDetails;
         } 
         #endregion
+        public bool IsUserAvailable(string Mobile)
+        {
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            Parameter["Mobile"] = new SqlParameter("Mobile", Mobile);
+            var res = _GenClass.ExecuteQuery("", Parameter);
+            DataRow row = res.Rows[0];
+            if (row == null)
+                return true;
+            
+            else
+                return false;
+            
+        }
 
     }
 
