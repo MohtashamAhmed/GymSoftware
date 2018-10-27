@@ -11,7 +11,7 @@ namespace Service
 {
     public class TrainerService
     {
-        private GenericClass _GenClass;
+        private static GenericClass _GenClass = new GenericClass();
         //public string TrainerRegistration(TrainerModel Trainer)
         //{
         //    Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();

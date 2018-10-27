@@ -11,7 +11,7 @@ namespace Service
 {
     public class UserService
     {
-        private GenericClass _GenClass;
+        private static GenericClass _GenClass = new GenericClass();
 
         public void test()
         {
@@ -99,6 +99,7 @@ namespace Service
             return dash;
         } 
         #endregion
+
         #region Membership Details
         public List<MembershipDetails> GetMembershipDetails()
         {
@@ -115,9 +116,9 @@ namespace Service
             }
 
             return MemberList;
-
-            #endregion
         }
+        #endregion
+
         #region BatchDetails
         public List<BatchDetails> GetBatchDetails()
         {
