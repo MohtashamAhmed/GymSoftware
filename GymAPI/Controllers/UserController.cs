@@ -13,14 +13,14 @@ namespace GymAPI.Controllers
     {
         UserService _service = new UserService();
         [HttpPost]
-        public string UserRegistration(UserModel Registration)
+        public string UserRegistration(CustomerRegistration Registration)
         {
-            var result = _service.UserRegistration(Registration);
+            var result = _service.CustomerRegistration(Registration);
             return result;
         }
 
         [HttpGet]
-        public List<UserModel> GetAllUser(string FullName , string MobileNo)
+        public List<CustomerRegistration> GetAllUser(string FullName , string MobileNo)
         {
             var result = _service.GetAllUser( FullName, MobileNo);
             return result;
@@ -32,6 +32,16 @@ namespace GymAPI.Controllers
             return _service.DashboardDetails();
         }
 
+        public List<MembershipDetails> GetMembershipDetails ()
+        {
+            var result = _service.GetMembershipDetails();
+            return result;
+        }
+        public List <BatchDetails> GetBatchDetails()
+        {
+            var result = _service.GetBatchDetails();
+            return result;
+        }
     }
 
 }

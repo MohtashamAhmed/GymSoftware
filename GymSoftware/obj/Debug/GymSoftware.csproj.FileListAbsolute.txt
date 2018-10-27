@@ -122,7 +122,10 @@ C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.Owin.
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Newtonsoft.Json.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Owin.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Net.Http.Formatting.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Helpers.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.WebHost.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Mvc.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Optimization.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Razor.dll
@@ -136,6 +139,9 @@ C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.AI.We
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.ApplicationInsights.xml
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Net.Http.Formatting.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.WebHost.xml
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Helpers.xml
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Mvc.xml
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Optimization.xml
@@ -162,9 +168,3 @@ C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.Owin.
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.csprojResolveAssemblyReference.cache
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.dll
 C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.pdb
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Net.Http.Formatting.dll
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.dll
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.WebHost.dll
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Net.Http.Formatting.xml
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.xml
-C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\GymSoftware\bin\System.Web.Http.WebHost.xml
