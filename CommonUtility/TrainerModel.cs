@@ -8,8 +8,11 @@ namespace CommonUtility
 {
    public class TrainerModel
     {
-        public int TrainerID { get; set; }
+        public int ID { get; set; }
         public string TrainerName { get; set; }
-        public string TrainerAvailability { get; set; }
+        public string Gender { get; set; }
+        public string Mobile { get; set; }
+        public string Email { get; set; }
+        public string JoinDate { get; set; }
     }
 }

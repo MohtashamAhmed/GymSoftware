@@ -97,7 +97,7 @@ namespace Service
             dash.QuaterlySales = row["QuaterlySales"].ToString();
             dash.YearlySales = row["YearlySales"].ToString();
             return dash;
-        } 
+        }
         #endregion
 
         #region Membership Details
@@ -130,11 +130,12 @@ namespace Service
             {
                 BD.ID = row.Field<string>("ID");
                 BD.BatchName = row.Field<string>("BatchName");
+                BD.BatchName = row.Field<string>("BatchName") +" (" +row.Field<string>("Timings")+")";
                 BD.Timings = row.Field<string>("Timings");
                 BatchDetails.Add(BD);
             }
             return BatchDetails;
-        } 
+        }
         #endregion
         public bool IsUserAvailable(string Mobile)
         {
@@ -144,10 +145,10 @@ namespace Service
             DataRow row = res.Rows[0];
             if (row == null)
                 return true;
-            
+
             else
                 return false;
-            
+
         }
 
     }

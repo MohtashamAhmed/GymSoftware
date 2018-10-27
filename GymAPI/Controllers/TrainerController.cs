@@ -11,13 +11,12 @@ namespace GymAPI.Controllers
 {
     public class TrainerController : ApiController
     {
-        //TrainerService _Trainerservice = new TrainerService();
-        //public string TrainerRegistration(TrainerModel Trainer)
-        //{
-        //    var result = _Trainerservice.TrainerRegistration(Trainer);
-        //    return result;
-        //}
         TrainerService _Trainerservice = new TrainerService();
+        public string TrainerRegistration(TrainerModel Trainer)
+        {
+            var result = _Trainerservice.TrainerRegistration(Trainer);
+            return result;
+        }
         [HttpGet]
         public List<TrainerModel> GetAllTrainers()
         {
