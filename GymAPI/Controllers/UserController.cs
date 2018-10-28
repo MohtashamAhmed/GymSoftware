@@ -42,6 +42,13 @@ namespace GymAPI.Controllers
             var result = _service.GetBatchDetails();
             return result;
         }
+        #region Graphical Reports
+        public List<GraphicalReports> GetGraphDetails()
+        {
+            var res = _service.GetGraphDetails();
+            return res;
+        }
+        #endregion
     }
 
 }

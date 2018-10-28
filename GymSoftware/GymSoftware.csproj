@@ -211,6 +211,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -236,6 +237,7 @@
     <Content Include="Content\Script\waves.js" />
     <Content Include="Content\style.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\css.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -296,6 +298,8 @@
     <Content Include="Views\User\UserRegistration.cshtml" />
     <Content Include="Views\Trainer\TrainerRegistration.cshtml" />
     <Content Include="Views\Trainer\GetAllTrainer.cshtml" />
+    <Content Include="Views\User\GetAllCustomers.cshtml" />
+    <Content Include="Views\Reporting\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

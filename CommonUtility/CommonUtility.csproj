@@ -43,6 +43,7 @@
     <Compile Include="BatchDetails.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DashboardModel.cs" />
+    <Compile Include="GraphicalReports.cs" />
     <Compile Include="MembershipDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainerModel.cs" />

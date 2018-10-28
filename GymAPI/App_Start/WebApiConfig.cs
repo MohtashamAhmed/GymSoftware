@@ -15,8 +15,8 @@ namespace GymAPI
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
-            var corsattr = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(corsattr);
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsAttr);
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 

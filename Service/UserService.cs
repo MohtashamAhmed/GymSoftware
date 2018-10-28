@@ -151,6 +151,23 @@ namespace Service
 
         }
 
+        public List<GraphicalReports> GetGraphDetails()
+        {
+            GraphicalReports GD = new GraphicalReports();
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            List<GraphicalReports> Graph = new List<GraphicalReports>();
+            foreach (DataRow row in dt.Rows)
+            {
+                GD.Sales = row.Field<string>("Sales");
+                GD.StartDate = row.Field<DateTime>("StartDate");
+                GD.EndDate = row.Field<DateTime>("EndDate");
+                Graph.Add(GD);
+            }
+
+            return Graph;
+        }
+
     }
 
 }

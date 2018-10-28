@@ -15,13 +15,12 @@ namespace Service
         public string TrainerRegistration(TrainerModel Trainer)
         {
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["ID"] = new SqlParameter("ID", Trainer.ID);
             Parameter["TrainerName"] = new SqlParameter("TrainerName", Trainer.TrainerName);
             Parameter["Gender"] = new SqlParameter("TrainerAvailability", Trainer.Gender);
             Parameter["Mobile"] = new SqlParameter("TrainerAvailability", Trainer.Mobile);
             Parameter["Email"] = new SqlParameter("TrainerAvailability", Trainer.Email);
-            Parameter["JoinDate"] = new SqlParameter("TrainerAvailability", Trainer.JoinDate);
-            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            Parameter["JoinDate"] = new SqlParameter("TrainerAvailability", DateTime.Now);
+            DataTable dt = _GenClass.ExecuteQuery("SP_AddTrainer", Parameter);
             if (dt != null && dt.Rows.Count > 0)
             {
                 return "New ID generated";
@@ -34,7 +33,7 @@ namespace Service
         public List<TrainerModel> GetAllTrainers()
         {
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            DataTable dt = _GenClass.ExecuteQuery("SP_AddTrainer", Parameter);
             List<TrainerModel> Trainers = new List<TrainerModel>();
             foreach (DataRow row in dt.Rows)
             {
