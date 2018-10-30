@@ -11,45 +11,39 @@
                 <h4 class="m-b-0 text-white">Customer Registration</h4>
             </div>
             <div class="card-body">
-                <form action="#">
                     <div class="form-body">
-                        <h3 class="box-title">Customer Information</h3>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">First Name</label>
+                                    <label class="control-label text-right col-md-3">Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter First Name">
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Name">
                                         @*<small class="form-control-feedback"> This is inline help </small>*@
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group has-danger row">
-                                    <label class="control-label text-right col-md-3">Last Name</label>
-                                    <div class="col-md-9">
-                                        <input type="text" id="txtlastname" class="form-control form-control-danger" placeholder="Enter Last Name">
-                                        @*<small class="form-control-feedback"> This field has error. </small>*@
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Gender</label>
                                     <div class="col-md-9">
-                                        <select class="form-control custom-select" id="gen">
-                                            <option value="">Male</option>
-                                            <option value="">Female</option>
-                                        </select>
-                                        <small class="form-control-feedback"> Select your gender. </small>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio3" name="member" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio3">Male</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio3" name="member" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio3">Female</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!--/span-->
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -59,132 +53,108 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        @*<div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Category</label>
+                                    <label class="control-label text-right col-md-3">Source</label>
                                     <div class="col-md-9">
-                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                            <option value="Category 1">Category 1</option>
-                                            <option value="Category 2">Category 2</option>
-                                            <option value="Category 3">Category 5</option>
-                                            <option value="Category 4">Category 4</option>
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Source">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Weight</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter weight">
+                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Memebership</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control custom-select" id="gen">
+                                            <option value="">-- Select--</option>
+                                            <option value="">1 Month</option>
+                                            <option value="">3 Months</option>
+                                            <option value="">6 Months</option>
+                                            <option value="">1 Year</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div>*@
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Membership</label>
-                                <div class="col-md-9">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio3" name="member" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio3">Free</label>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Batch Tymings</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control custom-select" id="gen">
+                                            <option value="">-- Select--</option>
+                                            <option value="">Morning (6 Am - 10 AM)</option>
+                                            <option value="">Evening (7 PM - 11 PM)</option>
+                                        </select>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio4" name="member" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio4">Paid</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Total Payment</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Total Payment">
+                                        @*<small class="form-control-feedback"> This is inline help </small>*@
                                     </div>
                                 </div>
                             </div>
+                            <!--/span-->
+                            <!--/span-->
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Payment</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Payment">
+                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Outstanding Amount</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Outstanding">
+                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                        </div>
+
+                        <div class="row">
+                            <div class="container">
+                                <center>
+                                    <button type="submit" id="btnGetData" class="btn btn-primary">Register</button>
+                                </center>
+                            </div>
+                        </div>
+                        
                         <!--/span-->
                     </div>
-                    <h3 class="box-title">Address</h3>
-                    <hr class="m-t-0 m-b-40">
-                    <!--/row-->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Address 1</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Address 2</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">City</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">State</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                    </div>
-                    <!--/row-->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Post Code</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Country</label>
-                                <div class="col-md-9">
-                                    <select class="form-control custom-select">
-                                        <option>Country 1</option>
-                                        <option>Country 2</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                    </div>
-                    <!--/row-->
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <label class="control-label text-right col-md-3">EmailID</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button id="btnGetData" type="button" class="btn btn-outline-primary rounded-0">Register</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6"> </div>
-                    </div>
-                </div>
-                </form>
+                   
+                    
             </div>
         </div>
     </div>

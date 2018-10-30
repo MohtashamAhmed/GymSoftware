@@ -1,9 +1,50 @@
-﻿@{
+﻿@model List<GymSoftware.Models.CustomerVM>
+@{
     ViewBag.Title = "GetAllCustomers";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
     <link rel="stylesheet" type="text/css" href="~/fonts/css.css">
 }
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Registered Customers</h4><br />
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table" id="Cust_Rec">
+                        <thead style="background-color:#03a9f3">
+                            <tr style="color:white">
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Source</th>
+                                <th>Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                           {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Mobile</td>
+                                <td>@item.Source</td>
+                                <td>@item.Payment</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
-<h2>GetAllCustomers</h2>
+            </div>
+        </div>
 
-
+    </div>
+</div>
+<script src="~/Content/Script/jquery-3.2.1.min.js"></script>
+<script src="~/Content/Script/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Cust_Rec').DataTable({
+            "bLengthChange": false,
+            "pagingType": "full_numbers"
+        });
+    });
+</script>
