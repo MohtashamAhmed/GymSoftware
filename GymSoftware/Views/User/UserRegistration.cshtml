@@ -1,95 +1,98 @@
-﻿@{
+﻿@model CommonUtility.CustomerRegistration
+@{
     ViewBag.Title = "UserRegistration";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 
 
 }
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card ">
-            <div class="card-header bg-info">
-                <h4 class="m-b-0 text-white">Customer Registration</h4>
-            </div>
-            <div class="card-body">
+@using (Html.BeginForm("UserRegistration", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="row">        
+        <div class="col-lg-12">
+            <div class="card ">
+                <div class="card-header bg-info">
+                    <h4 class="m-b-0 text-white">Customer Registration</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+                    </div>
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Name">
-                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Gender</label>
+                                    <label class="control-label text-right col-md-3">Mobile</label>
                                     <div class="col-md-9">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio3" name="member" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio3">Male</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio3" name="member" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio3">Female</label>
-                                        </div>
+                                        @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <!--/span-->
+
                         </div>
-                        <!--/row-->
                         <div class="row">
-                            
-                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Gender</label>
+                                    <div class="col-md-9">
+                                        <div class="custom-control custom-radio">
+                                            <label>
+                                                @Html.RadioButtonFor(x => x.Gender, "Male", new { id = "gender", @checked = "checked" }) Male
+                                            </label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <label>
+                                                @Html.RadioButtonFor(x => x.Gender, "FeMale", new { id = "gender" }) Female
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Date of Birth</label>
                                     <div class="col-md-9">
-                                        <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                        @Html.TextBoxFor(x => x.DateofBirth, new { @class = "form-control", @placeholder = "MM/DD/YYYY" })
+                                        @*<input type="text" id="datepicker" class="form-control"  placeholder="MM/DD/YYYY" />*@
+                                        @*<input type="date" name="DateofBirth" class="form-control" placeholder="dd/mm/yyyy">*@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Source</label>
-                                    <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Source">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
+
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="control-label text-right col-md-3">Weight</label>
+                                    <label class="control-label text-right col-md-3">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter weight">
-                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Memebership</label>
                                     <div class="col-md-9">
-                                        <select class="form-control custom-select" id="gen">
-                                            <option value="">-- Select--</option>
-                                            <option value="">1 Month</option>
-                                            <option value="">3 Months</option>
-                                            <option value="">6 Months</option>
-                                            <option value="">1 Year</option>
-                                        </select>
+                                        @Html.DropDownListFor(model => model.MembershipID, ViewBag.Membership as SelectList, "-- Select --", new { @class = "form-control" })
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <!--/span-->
+
                         </div>
 
                         <div class="row">
@@ -97,11 +100,7 @@
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Batch Tymings</label>
                                     <div class="col-md-9">
-                                        <select class="form-control custom-select" id="gen">
-                                            <option value="">-- Select--</option>
-                                            <option value="">Morning (6 Am - 10 AM)</option>
-                                            <option value="">Evening (7 PM - 11 PM)</option>
-                                        </select>
+                                        @Html.DropDownListFor(model => model.BatchID, ViewBag.Batchdetails as SelectList, "-- Select --", new { @class = "form-control" })
                                     </div>
                                 </div>
                             </div>
@@ -110,13 +109,11 @@
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Total Payment</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Total Payment">
-                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                        @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Payment", @readonly = "readonly" })
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <!--/span-->
+
                         </div>
 
                         <div class="row">
@@ -124,8 +121,7 @@
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Payment</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Payment">
-                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                        @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
                                     </div>
                                 </div>
                             </div>
@@ -134,13 +130,31 @@
                                 <div class="form-group row">
                                     <label class="control-label text-right col-md-3">Outstanding Amount</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="txtfname" class="form-control" placeholder="Enter Outstanding">
-                                        @*<small class="form-control-feedback"> This is inline help </small>*@
+                                        @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding", @readonly = "readonly" })
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <!--/span-->
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Weight</label>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(x => x.Weight, new { @class = "form-control", @placeholder = "Enter weight" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Source</label>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(x => x.Source, new { @class = "form-control", @placeholder = "Enter Source" })
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -150,42 +164,60 @@
                                 </center>
                             </div>
                         </div>
-                        
-                        <!--/span-->
                     </div>
-                   
-                    
+
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
-        //var apiBaseUrl = "http://localhost:54874//";
-        $('#btnGetData').click(function () {
-
-            var Registration = new Object();
-            Registration.FirstName = $('#txtfname').val();
-            Registration.LastName = $('#txtlastname').val();
-            Registration.Gender = $('#gen').val();
-
-
-            $.ajax({
-                url: 'http://localhost:2154/api/User/UserRegistration/',
-                type: 'POST',
-                data: JSON.stringify(Registration),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function () {
-                    alert('Error!');
-                }
-            });
+        $("#DateofBirth").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1948:2010"
         });
+
+        $("#MembershipID").change(function () {
+            var mid = $(this).val();
+            if (mid != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("BindPrice", "User")',
+                    data: { memid: mid },
+                    dataType: "json",
+                    success: function (data) {
+                        $('#TotalPayment').val(data.price);
+                        $('#Outstanding').val(data.price);
+                    },
+                    error: function () {
+                    }
+                });
+            }
+            else {
+                $('#TotalPayment').val('');
+                $('#Outstanding').val('');
+            }
+
+        });
+
+        $('#Payment').change(function () {
+            var paymnt = $(this).val();
+            var totalpaymnt = $('#TotalPayment').val();
+            var amt = "";
+            if (paymnt != '') {
+                amt = parseInt(totalpaymnt) - parseInt(paymnt);
+                $('#Outstanding').val(amt);
+            }
+            else {
+                $('#Outstanding').val(totalpaymnt);
+            }
+        });
+
+
     });
 </script>
-
-

@@ -86,3 +86,7 @@ C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.Owin.S
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.csprojResolveAssemblyReference.cache
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.dll
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Debug\GymSoftware.pdb
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\CommonUtility.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\Service.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\CommonUtility.pdb
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\Service.pdb

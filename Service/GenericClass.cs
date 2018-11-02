@@ -13,7 +13,7 @@ namespace Service
         public SqlConnection GetConnection(string connectionName)
         {
             //string cnstr = ConfigurationSettings.AppSettings[connectionName];
-            SqlConnection cn = new SqlConnection("Data Source=DESKTOP-6H0DS1N;Initial Catalog=hrms01;Integrated Security=True");
+            SqlConnection cn = new SqlConnection("Data Source=MOHTASHAM-PC;Initial Catalog=GymSoftware;Integrated Security=True");
             cn.Open();
             return cn;
         }
@@ -27,11 +27,11 @@ namespace Service
             {
                 foreach (var procParameter in procParameters)
                 {
-                    cmd.Parameters.Add(procParameter.Value);
+                    cmd.Parameters.AddWithValue(procParameter.Key, procParameter.Value.SqlValue);
                 }
             }
-            int rc = cmd.ExecuteNonQuery();
-            return rc;
+            object obj = cmd.ExecuteScalar();
+            return Convert.ToInt32(obj);
         }
 
         public DataTable ExecuteQuery(string Name, Dictionary<string, SqlParameter> procParameters)
@@ -39,11 +39,12 @@ namespace Service
             DataTable dt = new DataTable();
             var sqlCon = GetConnection("");
             SqlCommand cmd = new SqlCommand(Name, sqlCon);
+            cmd.CommandType = CommandType.StoredProcedure;
             if (procParameters != null && procParameters.Count > 0)
             {
                 foreach (var procParameter in procParameters)
                 {
-                    cmd.Parameters.Add(procParameter.Value);
+                    cmd.Parameters.AddWithValue(procParameter.Key,procParameter.Value.SqlValue);
                 }
             }
             SqlDataAdapter Adapter = new SqlDataAdapter(cmd);

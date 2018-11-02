@@ -13,6 +13,6 @@ namespace CommonUtility
         public string Gender { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
-        public string JoinDate { get; set; }
+        public DateTime JoinDate { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<GymSoftware.Models.CustomerVM>
+﻿@model List<CommonUtility.CustomerRegistration>
 @{
     ViewBag.Title = "GetAllCustomers";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
@@ -15,19 +15,27 @@
                             <tr style="color:white">
                                 <th>Name</th>
                                 <th>Mobile</th>
-                                <th>Source</th>
+                                <th>Email</th>
+                                <th>Membership</th>
+                                <th>Batch Timings</th>
                                 <th>Payment</th>
+                                <th>Payment Date</th>
+                                <th>Expiry Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
-                           {
-                            <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Mobile</td>
-                                <td>@item.Source</td>
-                                <td>@item.Payment</td>
-                            </tr>
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Mobile</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.MembershipName</td>
+                                    <td>@item.BatchName</td>
+                                    <td>@item.Payment</td>
+                                    <td>@item.DateOfPayment.ToShortDateString()</td>
+                                    <td>@item.ExpiryDate.ToShortDateString()</td>
+                                </tr>
                             }
                         </tbody>
                     </table>

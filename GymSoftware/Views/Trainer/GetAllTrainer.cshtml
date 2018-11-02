@@ -1,23 +1,8 @@
-﻿@{
+﻿@model List<CommonUtility.TrainerModel>
+@{
     ViewBag.Title = "Search Trainer";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-
-
-@*<title>Trainers Details</title>
-<div class="container-fluid">
-    <h1>Trainer Information</h1>
-    <div class="row">
-        <div class="col-sm-2" style="background-color:lavender;">ID</div>
-        <div class="col-sm-2" style="background-color:lavenderblush;">Trainer Name</div>
-        <div class="col-sm-2" style="background-color:lavender;">Gender</div>
-        <div class="col-sm-2" style="background-color:lavender;">Mobile</div>
-        <div class="col-sm-2" style="background-color:lavender;">Email</div>
-        <div class="col-sm-2" style="background-color:lavender;">JoinDate</div>
-
-    </div>
-</div>*@
-
 
 <div class="card">
     <div class="card-body">
@@ -28,7 +13,6 @@
                     <table class="table" id="Cust_Rec">
                         <thead style="background-color:#03a9f3">
                             <tr style="color:white">
-                                <th>ID</th>
                                 <th>Trainer Name</th>
                                 <th>Gender</th>
                                 <th>Mobile</th>
@@ -36,17 +20,18 @@
                                 <th>JoinDate</th>
                             </tr>
                         </thead>
-                        @*<tbody>
+                        <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.Name</td>
+                                    <td>@item.TrainerName</td>
+                                    <td>@item.Gender</td>
                                     <td>@item.Mobile</td>
-                                    <td>@item.Source</td>
-                                    <td>@item.Payment</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.JoinDate.ToShortDateString()</td>
                                 </tr>
                             }
-                        </tbody>*@
+                        </tbody>
                     </table>
                 </div>
 

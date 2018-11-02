@@ -5,30 +5,54 @@ using System.Web;
 using System.Web.Mvc;
 using GymSoftware;
 using GymSoftware.Models;
+using Service;
+using CommonUtility;
 
 namespace GymSoftware.Controllers
 {
     public class UserController : Controller
     {
+        UserService _service = new UserService();
+
         public ActionResult UserRegistration()
         {
-            return View();
+            CustomerRegistration Registration = new CustomerRegistration();
+            BindDropDowns();
+            return View(Registration);
         }
+
+        [HttpPost]
+        public ActionResult UserRegistration(CustomerRegistration Registration)
+        {
+            if (!ModelState.IsValid)
+                return View(Registration);
+
+            var result = _service.CustomerRegistration(Registration);
+            BindDropDowns();
+            return View(Registration);
+        }
+
         public ActionResult GetAllCustomers()
         {
-            List<CustomerVM> ListCusVM = new List<CustomerVM>();
-           
-            for (int i = 0; i < 10; i++)
-            {
-                CustomerVM cus = new CustomerVM();
-                cus.Name = "Name" + i;
-                cus.Mobile = "8143287477";
-                cus.Source = "Social Media";
-                cus.Payment = i.ToString();
-                ListCusVM.Add(cus);
-            }
-            return View(ListCusVM);
+            var CustList = _service.GetAllUser("", "");
+            return View(CustList);
         }
-        
+
+        [HttpPost]
+        public ActionResult BindPrice(int memid)
+        {
+            var PackagePrice = _service.GetMembershipDetails();
+            int? Price = PackagePrice.Where(x => x.ID == memid).Select(x => x.Price).FirstOrDefault();
+            return Json(new { price = Price, JsonRequestBehavior.AllowGet });
+        }
+
+        public void BindDropDowns()
+        {
+            var membershipdropdown = _service.GetMembershipDetails();
+            var Batchdropdown = _service.GetBatchDetails();
+            ViewBag.Membership = new SelectList(membershipdropdown, "ID", "Name");
+            ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
+        }
+
     }
 }

@@ -8,7 +8,7 @@ namespace CommonUtility
 {
     public class BatchDetails
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string BatchName { get; set; }
         public string Timings { get; set; }
     }

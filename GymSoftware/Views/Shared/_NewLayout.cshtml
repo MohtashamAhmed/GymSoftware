@@ -5,6 +5,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Gym Management</title>
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/style.min.css" rel="stylesheet" />
 </head>
@@ -15,7 +16,7 @@
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="@Url.Action("Dashboard", "Home")">
+                    <a class="navbar-brand" href="@Url.Action("Dashboard", "Reporting")">
                         <b>Gym Management</b>
                     </a>
                 </div>
@@ -252,19 +253,19 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
-                            <a href="@Url.Action("Dashboard","Home")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="@Url.Action("Dashboard","Reporting")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
+                            <a href="@Url.Action("UserRegistration","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Create Customer</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark two-column" href="#" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui</span></a>
+                            <a href="@Url.Action("TrainerRegistration","Trainer")" class="has-arrow waves-effect waves-dark two-column" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Create Trainer</span></a>
                         </li>
                         <li>
-                            <a href="@Url.Action("MyAction","Home")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Forms</span></a>
+                            <a href="@Url.Action("GetAllCustomers","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">View Customers</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="ti-layout-accordion-merged"></i><span class="hide-menu">Tables</span></a>
+                            <a href="@Url.Action("GetAllTrainer","Trainer")" class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="ti-layout-accordion-merged"></i><span class="hide-menu">View Trainers</span></a>
                         </li>
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Widgets</span></a>
@@ -286,24 +287,12 @@
         <div class="page-wrapper">
 
             <div class="container-fluid">
-                <div class="row page-titles">
-                    <div class="col-md-5 align-self-center">
-                    </div>
-                    <div class="col-md-7 align-self-center text-right">
-                        <div class="d-flex justify-content-end align-items-center">
-                            @*<ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active">Form Layout</li>
-                            </ol>*@
-                            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
-                        </div>
-                    </div>
-                </div>
+                
                 @RenderBody()
             </div>
         </div>
 
-        <footer class="footer"><center>© 2018 Eliteadmin by themedesigner.in</center></footer>
+        <footer class="footer"><center>© 2018 www.GymSoftware.com. All rights reserved.</center></footer>
 
     </div>
 
