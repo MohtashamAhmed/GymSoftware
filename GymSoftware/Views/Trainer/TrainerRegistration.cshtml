@@ -3,36 +3,38 @@
     ViewBag.Title = "TrainerRegistration";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-@using (Html.BeginForm("TrainerRegistration", "Trainer", FormMethod.Post, new { @class = "form-horizontal" }))
-{
-    <div class="container">
-        <h2>Trainer Registration</h2>
-            <div class="form-group">
-                <label for="Name">Trainer Name:</label>
-                @Html.TextBoxFor(x=>x.TrainerName,new { @class= "form-control", @placeholder = "Enter Your Name" })
-            </div>
-            <div class="form-group">
-                <label for="Gender">Gender:</label>
-                <select class="form-control custom-select" name="Gender">
-                    <option value="0">-- Select --</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Mobile">Mobile:</label>
-                @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
-            </div>
-            <center> <button type="submit" id="btnGetData" class="btn btn-primary">Register</button> </center>
+
+<div class="card card-body">
+    <h3 class="box-title m-b-0">Trainer Registration</h3>
+    <p class="text-muted m-b-30 font-13">  </p>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+            @using (Html.BeginForm("TrainerRegistration", "Trainer", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label>Trainer Name</label>
+                    @Html.TextBoxFor(x => x.TrainerName, new { @class = "form-control", @placeholder = "Enter Your Name" })
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control" name="Gender">
+                        <option value="0">-- Select --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mobile</label>
+                    @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+                </div>
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Register</button>
+                <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+            }
+        </div>
     </div>
-}
+</div>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-
-
-
-
-

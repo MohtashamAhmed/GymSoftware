@@ -3,9 +3,8 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <h2>Dashboard</h2>
-
 <div class="row">
     <!-- Column -->
     <div class="col-lg-3 col-md-6">
@@ -15,7 +14,7 @@
                 <div class="d-flex no-block align-items-center m-t-20 m-b-20">
                     <div id="sparklinedash"></div>
                     <div class="ml-auto">
-                        <h2 class="text-success"><i class="ti-arrow-up"></i> <span class="counter">8659</span></h2>
+                        <h2 class="text-success"><i class="fa fa-arrow-up"></i> <span class="counter">8659</span></h2>
                     </div>
                 </div>
             </div>
@@ -30,7 +29,7 @@
                 <div class="d-flex no-block align-items-center m-t-20 m-b-20">
                     <div id="sparklinedash2"></div>
                     <div class="ml-auto">
-                        <h2 class="text-purple"><i class="ti-arrow-up"></i> <span class="counter">7469</span></h2>
+                        <h2 class="text-purple"><i class="fa fa-arrow-up"></i> <span class="counter">7469</span></h2>
                     </div>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                 <div class="d-flex no-block align-items-center m-t-20 m-b-20">
                     <div id="sparklinedash3"></div>
                     <div class="ml-auto">
-                        <h2 class="text-info"><i class="ti-arrow-up"></i> <span class="counter">6011</span></h2>
+                        <h2 class="text-info"><i class="fa fa-arrow-up"></i> <span class="counter">6011</span></h2>
                     </div>
                 </div>
             </div>
@@ -61,11 +60,109 @@
                 <div class="d-flex no-block align-items-center m-t-20 m-b-20">
                     <div id="sparklinedash4"></div>
                     <div class="ml-auto">
-                        <h2 class="text-danger"><i class="ti-arrow-down"></i> <span class="counter">18%</span></h2>
+                        <h2 class="text-danger"><i class="fa fa-arrow-down"></i> <span class="counter">18%</span></h2>
                     </div>
                 </div>
             </div>
             <div id="sparkline8" class="sparkchart"></div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>
+
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">ORDER STATUS</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Invoice</th>
+                            <th>User</th>
+                            <th>Order date</th>
+                            <th>Amount</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Tracking Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link"> Order #53431</a></td>
+                            <td>Steve N. Horton</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
+                            <td>$45.00</td>
+                            <td class="text-center">
+                                <div class="label label-table label-success">Paid</div>
+                            </td>
+                            <td class="text-center">-</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link"> Order #53432</a></td>
+                            <td>Charles S Boyle</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 24, 2014</span></td>
+                            <td>$245.30</td>
+                            <td class="text-center">
+                                <div class="label label-table label-info">Shipped</div>
+                            </td>
+                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089734531</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link"> Order #53433</a></td>
+                            <td>Lucy Doe</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 24, 2014</span></td>
+                            <td>$38.00</td>
+                            <td class="text-center">
+                                <div class="label label-table label-info">Shipped</div>
+                            </td>
+                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089934571</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link"> Order #53434</a></td>
+                            <td>Teresa L. Doe</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 15, 2014</span></td>
+                            <td>$77.99</td>
+                            <td class="text-center">
+                                <div class="label label-table label-info">Shipped</div>
+                            </td>
+                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089734574</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link"> Order #53435</a></td>
+                            <td>Teresa L. Doe</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 12, 2014</span></td>
+                            <td>$18.00</td>
+                            <td class="text-center">
+                                <div class="label label-table label-success">Paid</div>
+                            </td>
+                            <td class="text-center">-</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link">Order #53437</a></td>
+                            <td>Charles S Boyle</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 17, 2014</span></td>
+                            <td>$658.00</td>
+                            <td class="text-center">
+                                <div class="label label-table label-danger">Refunded</div>
+                            </td>
+                            <td class="text-center">-</td>
+                        </tr>
+                        <tr>
+                            <td><a href="javascript:void(0)" class="link">Order #536584</a></td>
+                            <td>Scott S. Calabrese</td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 19, 2014</span></td>
+                            <td>$45.58</td>
+                            <td class="text-center">
+                                <div class="label label-table label-warning">Unpaid</div>
+                            </td>
+                            <td class="text-center">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- Column -->

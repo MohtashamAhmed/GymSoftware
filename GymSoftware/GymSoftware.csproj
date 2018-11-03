@@ -239,6 +239,8 @@
     <Content Include="Content\Script\sticky-kit.min.js" />
     <Content Include="Content\Script\waves.js" />
     <Content Include="Content\style.min.css" />
+    <Content Include="Content\themify-icons-frontend.min.css" />
+    <Content Include="Content\themify-icons.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\css.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
