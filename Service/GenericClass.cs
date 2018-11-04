@@ -13,7 +13,7 @@ namespace Service
         public SqlConnection GetConnection(string connectionName)
         {
             //string cnstr = ConfigurationSettings.AppSettings[connectionName];
-            SqlConnection cn = new SqlConnection("Data Source=MOHTASHAM-PC;Initial Catalog=GymSoftware;Integrated Security=True");
+            SqlConnection cn = new SqlConnection("Data Source=DESKTOP-6H0DS1N;Initial Catalog=GymSoftware;Integrated Security=True");
             cn.Open();
             return cn;
         }

@@ -8,8 +8,8 @@ namespace CommonUtility
 {
     public class DashboardModel
     {
-        public string MonthlySales { get; set; }
-        public string QuaterlySales { get; set; }
-        public string YearlySales { get; set; }
+        public string UpcomingBirthdays { get; set; }
+        public string Notifications { get; set; }
+        
     }
 }

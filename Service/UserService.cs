@@ -57,7 +57,6 @@ namespace Service
             return "Registration Failed";
         }
 
-
         public DateTime GetMembershipExpDate(DateTime Date, int MembershipID)
         {
             DateTime ExpDate = Date;
@@ -116,14 +115,13 @@ namespace Service
         #region Dashboard
         public DashboardModel DashboardDetails()
         {
-            DashboardModel dash = new DashboardModel();
+            DashboardModel Dashboard = new DashboardModel();
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
             var res = _GenClass.ExecuteQuery("", Parameter);
             DataRow row = res.Rows[0];
-            dash.MonthlySales = row["MonthlySales"].ToString();
-            dash.QuaterlySales = row["QuaterlySales"].ToString();
-            dash.YearlySales = row["YearlySales"].ToString();
-            return dash;
+            Dashboard.UpcomingBirthdays = row["UpcomingBirthdays"].ToString();
+            Dashboard.Notifications = row["Notifications"].ToString();
+            return Dashboard;
         }
         #endregion
 
@@ -194,7 +192,13 @@ namespace Service
 
             return Graph;
         }
-
+        public string Login( UserModel UM)
+        {
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            var res = _GenClass.ExecuteQuery("", Parameter);
+            return "";
+       }
     }
+
 
 }

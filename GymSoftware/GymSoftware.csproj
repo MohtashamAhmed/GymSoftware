@@ -227,7 +227,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\GYMIMG.jpg" />
     <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\Mori.jpg" />
     <Content Include="Content\Script\bootstrap.min.js" />
     <Content Include="Content\Script\custom.min.js" />
     <Content Include="Content\Script\jquery-3.2.1.min.js" />
@@ -305,6 +307,8 @@
     <Content Include="Views\Trainer\GetAllTrainer.cshtml" />
     <Content Include="Views\User\GetAllCustomers.cshtml" />
     <Content Include="Views\Reporting\Dashboard.cshtml" />
+    <Content Include="Views\User\DashboardDetails.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
