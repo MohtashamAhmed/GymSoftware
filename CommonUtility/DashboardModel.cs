@@ -10,6 +10,8 @@ namespace CommonUtility
     {
         public string UpcomingBirthdays { get; set; }
         public string Notifications { get; set; }
-        
+        public string TotalSales { get; set; }
+        public string FestiveOffer { get; set; }
+
     }
 }

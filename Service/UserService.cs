@@ -198,6 +198,24 @@ namespace Service
             var res = _GenClass.ExecuteQuery("", Parameter);
             return "";
        }
+        public List<Receipts> Receipts()
+        {
+            
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            List<Receipts> Receipts = new List<Receipts>();
+            foreach(DataRow row in dt.Rows)
+            {
+               Receipts TR = new Receipts();
+                TR.CustomerName = row.Field<string>("CustomerName");
+                TR.TotalReceipts = row.Field<string>("TotalReceipts");
+                TR.Date = row.Field<DateTime>("Date");
+                TR.TotalAmount = row.Field<string>("TotalAount");
+                Receipts.Add(TR);
+            }
+            return Receipts;
+        }
+
     }
 
 
