@@ -53,15 +53,18 @@ namespace GymSoftware.Controllers
             ViewBag.Membership = new SelectList(membershipdropdown, "ID", "Name");
             ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
         }
+
         public ActionResult DashboardDetails()
         {
             //var Dashboard = _service.DashboardDetails();
             return View();
         }
+
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login( UserModel UM)
         {
