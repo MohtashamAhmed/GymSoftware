@@ -210,7 +210,7 @@ namespace Service
                 TR.CustomerName = row.Field<string>("CustomerName");
                 TR.TotalReceipts = row.Field<string>("TotalReceipts");
                 TR.Date = row.Field<DateTime>("Date");
-                TR.TotalAmount = row.Field<string>("TotalAount");
+                TR.TotalAmount = row.Field<string>("TotalAmount");
                 Receipts.Add(TR);
             }
             return Receipts;

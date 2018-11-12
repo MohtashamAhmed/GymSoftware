@@ -7,6 +7,9 @@ using GymSoftware;
 using GymSoftware.Models;
 using Service;
 using CommonUtility;
+using System.Web.UI.WebControls;
+using System.Web.UI;
+using System.IO;
 
 namespace GymSoftware.Controllers
 {
@@ -75,6 +78,31 @@ namespace GymSoftware.Controllers
         {
             var Receipts = _service.Receipts();
             return View();
+        }
+        [HttpPost]
+        public ActionResult ExportToExcel()
+        {
+            var gv = new GridView();
+            gv.DataSource = _service.GetAllUser("","");
+            gv.DataBind();
+
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.ContentType = "application/ms-excel";
+
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+
+            gv.RenderControl(objHtmlTextWriter);
+
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+
+            return View("");
+
         }
     }
 }
