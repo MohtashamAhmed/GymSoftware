@@ -37,8 +37,9 @@ namespace GymSoftware.Controllers
 
         public ActionResult GetAllCustomers()
         {
-            var CustList = _service.GetAllUser("", "");
-            return View(CustList);
+            CustomerRegistration Model = new CustomerRegistration();
+            Model.UsersList = _service.GetAllUser("", "");
+            return View(Model);
         }
 
         [HttpPost]
@@ -77,7 +78,7 @@ namespace GymSoftware.Controllers
         public ActionResult Receipts()
         {
             var Receipts = _service.Receipts();
-            return View();
+            return View(Receipts);
         }
         [HttpPost]
         public ActionResult ExportToExcel()
