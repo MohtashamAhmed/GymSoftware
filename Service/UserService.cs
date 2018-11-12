@@ -87,23 +87,23 @@ namespace Service
         #endregion
 
         #region Retrieving All Users
-        public List<CustomerRegistration> GetAllUser(string Name, string MobileNo)
+        public List<DisplayCustomers> GetAllUser(string Name, string MobileNo)
         {
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
             Parameter["Name"] = new SqlParameter("Name", Name);
             Parameter["Mobile"] = new SqlParameter("Mobile", MobileNo);
             DataTable dt = _GenClass.ExecuteQuery("SP_CustomerDetails", Parameter);
-            List<CustomerRegistration> UserList = new List<CustomerRegistration>();
+            List<DisplayCustomers> UserList = new List<DisplayCustomers>();
             foreach (DataRow row in dt.Rows)
             {
-                CustomerRegistration UM = new CustomerRegistration();
+                DisplayCustomers UM = new DisplayCustomers();
                 UM.Name = row.Field<string>("Name");
                 UM.Mobile = row.Field<string>("Mobile");
                 UM.Email = row.Field<string>("Email");
-                UM.Gender = row.Field<string>("Gender");
                 UM.MembershipName = row.Field<string>("Memmership");
                 UM.BatchName = row.Field<string>("BatchName");
                 UM.Payment = row.Field<int>("Payment");
+                UM.Outstanding = row.Field<int>("Outstanding");
                 UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
                 UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
                 UserList.Add(UM);
@@ -198,22 +198,34 @@ namespace Service
             var res = _GenClass.ExecuteQuery("", Parameter);
             return "";
        }
-        public List<Receipts> Receipts()
+        public List<CustomerRegistration> Receipts()
         {
             
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            Parameter["Name"] = new SqlParameter("Name", "");
+            Parameter["Mobile"] = new SqlParameter("Mobile", "");
+            DataTable dt = _GenClass.ExecuteQuery("SP_CustomerDetails", Parameter);
             List<Receipts> Receipts = new List<Receipts>();
-            foreach(DataRow row in dt.Rows)
+            List<CustomerRegistration> UserList = new List<CustomerRegistration>();
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //   Receipts TR = new Receipts();
+            //    TR.CustomerName = row.Field<string>("CustomerName");
+            //    TR.TotalReceipts = row.Field<string>("TotalReceipts");
+            //    TR.Date = row.Field<DateTime>("Date");
+            //    TR.TotalAmount = row.Field<string>("TotalAount");
+            //    Receipts.Add(TR);
+            //}
+            foreach (DataRow row in dt.Rows)
             {
-               Receipts TR = new Receipts();
-                TR.CustomerName = row.Field<string>("CustomerName");
-                TR.TotalReceipts = row.Field<string>("TotalReceipts");
-                TR.Date = row.Field<DateTime>("Date");
-                TR.TotalAmount = row.Field<string>("TotalAount");
-                Receipts.Add(TR);
+                CustomerRegistration UM = new CustomerRegistration();
+                UM.Name = row.Field<string>("Name");
+                UM.Payment = row.Field<int>("Payment");
+                UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
+                UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
+                UserList.Add(UM);
             }
-            return Receipts;
+            return UserList;
         }
 
     }

@@ -1,37 +1,44 @@
-﻿@{
+﻿@model List<CommonUtility.CustomerRegistration>
+@{
     ViewBag.Title = "Receipts";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Receipts</h4>
+        <h6 class="card-subtitle">Can also search or sort by any column</h6>
+        <table class="table table-striped table-bordered" id="Cust_Rec">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th>ExpDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr class="gradeX">
+                        <td>@item.Name</td>
+                        <td>@item.Payment</td>
+                        <td>@item.DateOfPayment.ToShortDateString()</td>
+                        <td>@item.ExpiryDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
 
-<div class="container">
-    <h2>Bordered Table</h2>
-    <p>The .table-bordered class adds borders to a table:</p>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
-        </tbody>
-    </table>
+        </table>
+    </div>
 </div>
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Script/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#Cust_Rec').DataTable({
+            "bLengthChange": false,
+            "pagingType": "full_numbers"
+        });
+    });
+</script>
