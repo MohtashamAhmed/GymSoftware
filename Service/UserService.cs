@@ -219,12 +219,6 @@ namespace Service
             //}
             foreach (DataRow row in dt.Rows)
             {
-               Receipts TR = new Receipts();
-                TR.CustomerName = row.Field<string>("CustomerName");
-                TR.TotalReceipts = row.Field<string>("TotalReceipts");
-                TR.Date = row.Field<DateTime>("Date");
-                TR.TotalAmount = row.Field<string>("TotalAmount");
-                Receipts.Add(TR);
                 CustomerRegistration UM = new CustomerRegistration();
                 UM.Name = row.Field<string>("Name");
                 UM.Payment = row.Field<int>("Payment");

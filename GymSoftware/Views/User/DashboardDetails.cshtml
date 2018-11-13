@@ -10,211 +10,200 @@
         height: 500px;
     }
 </style>
-
-<h2>DashboardDetails</h2>
-<!-- Bread crumb and right sidebar toggle -->
-<div class="row page-titles">
-    <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Dashboard</h4>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Dashboard</h3>
+        <h5 class="card-subtitle">Dashboard Details</h5>
     </div>
-    <div class="col-md-7 align-self-center text-right">
-        <div class="d-flex justify-content-end align-items-center">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-3 col-md-12">
+                    <div class="card text-white" style="height:250px;background-color:#68b828">
+                        <div class="card-body">
+                            <h5 class="card-title">EMPLOYEE ATTENDANCE</h5>
+                            <div class="row">
+                                <div class="col-6  m-t-30">
+                                    <h1 class="text-white"></h1>
+                                    <p class="light_op_text">
+                                        TOTAL
+                                        @if (ViewBag.Attendence != null)
+                                        {
+                                            foreach (var item in ViewBag.Attendence)
+                                            {
+                                                @item["TotalPresent"];
+                                            }
+                                        }
+                                    </p>
+                                    @*<b class="text-white">96.875% PRESENT</b>*@
+                                </div>
+                                <div class="col-6">
+                                    <div id="dash1" class="text-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-3 col-md-12">
+                    <div class="card text-white" style="height:250px;background-color:#7c38bc">
+                        <div class="card-body">
+                            <h5 class="card-title">LEAVES APPROVED THIS MONTH</h5>
+                            <div class="row">
+                                <div class="col-6  m-t-30">
+                                    <h1 class="text-white">
+                                        @if (ViewBag.LeaveApproval != null)
+                                        {
+                                            foreach (var item in ViewBag.LeaveApproval)
+                                            {
+                                                @item["ApprovedLeaves"];
+                                            }
+                                        }
+                                    </h1>
+                                    <p class="light_op_text">
+                                        PENDING
+                                        @if (ViewBag.LeavePending != null)
+                                        {
+                                            foreach (var item in ViewBag.LeavePending)
+                                            {
+                                                @item["Pending"] ;
+                                            }
+                                        }
+
+                                    </p>
+                                    <b class="text-white">
+                                        REJECTED
+                                        @if (ViewBag.LeaveRejected != null)
+                                        {
+                                            foreach (var item in ViewBag.LeaveRejected)
+                                            {
+                                                @item["Rejected"];
+                                            }
+                                        }
+
+                                    </b>
+                                </div>
+                                <div class="col-6">
+                                    <div id="dash2" class="text-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-3 col-md-12">
+                    <div class="card text-white" style="height:250px;background-color:#ff4a43">
+                        <div class="card-body">
+                            <h5 class="card-title">UPCOMING BIRTHDAYS</h5>
+                            <div id="myCarouse2" class="carousel slide" style="line-height: 15px;" data-ride="carousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+
+                                    @if (ViewBag.Birthday != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in ViewBag.Birthday)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                <div class="carousel-item active">
+                                                    <h4 class="light_op_text">@item["CustomerName"]</h4>
+                                                    <h4 class="light_op_text">@item["BirthDay"]</h4>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="carousel-item">
+                                                    <h4 class="light_op_text">@item["CustomerName"]</h4>
+                                                    <h4 class="light_op_text">@item["BirthDay"]</h4>
+                                                </div>
+                                            }
+                                            i++;
+                                        }
+                                    }
+                                </div>
+                                <a class="carousel-control-prev" href="#myCarouse2" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarouse2" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-3 col-md-12">
+                    <div class="card text-white" style="height:250px;background-color:#2a2727">
+                        <div class="card-body">
+                            <h5 class="card-title">NOTIFICATIONS</h5>
+                            <br>  <h5 class="card-title" style="line-height:23px;"></h5></br>
+                            <div id="myCarouse3" class="carousel slide" data-ride="carousel">
+                                <!-- Carousel items -->
+
+                                <div class="carousel-inner">
+                                    @if (ViewBag.Notification != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var item in ViewBag.Notification)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                <div class="carousel-item active">
+                                                    <h4 class="light_op_text">@item["Message"]</h4>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="carousel-item">
+                                                    <h4 class="light_op_text">@item["Message"]</h4>
+                                                </div>
+                                            }
+                                            i++;
+                                        }
+                                    }
+                                </div>
+                                <a class="carousel-control-prev" href="#myCarouse3" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarouse3" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+                            </br><br class="text-white"></br>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
         </div>
+
+
     </div>
 </div>
-<!-- End Bread crumb and right sidebar toggle -->
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="row">
-            <!-- Column -->
-            <div class="col-lg-3 col-md-12">
-                <div class="card bg-primary text-white" style="height:250px">
-                    <div class="card-body">
-                        <h5 class="card-title">EMPLOYEE ATTENDANCE</h5>
-                        <div class="row">
-                            <div class="col-6  m-t-30">
-                                <h1 class="text-white"></h1>
-                                <p class="light_op_text">
-                                    TOTAL
-                                    @if (ViewBag.Attendence != null)
-                                    {
-                                        foreach (var item in ViewBag.Attendence)
-                                        {
-                                            @item["TotalPresent"];
-                                        }
-                                    }
-                                </p>
-                                @*<b class="text-white">96.875% PRESENT</b>*@
-                            </div>
-                            <div class="col-6">
-                                <div id="dash1" class="text-right"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-12">
-                <div class="card bg-cyan text-white" style="height:250px">
-                    <div class="card-body">
-                        <h5 class="card-title">LEAVES APPROVED THIS MONTH</h5>
-                        <div class="row">
-                            <div class="col-6  m-t-30">
-                                <h1 class="text-white">
-                                    @if (ViewBag.LeaveApproval != null)
-                                    {
-                                        foreach (var item in ViewBag.LeaveApproval)
-                                        {
-                                            @item["ApprovedLeaves"];
-                                        }
-                                    }
-                                </h1>
-                                <p class="light_op_text">
-                                    PENDING
-                                    @if (ViewBag.LeavePending != null)
-                                    {
-                                        foreach (var item in ViewBag.LeavePending)
-                                        {
-                                            @item["Pending"] ;
-                                        }
-                                    }
-
-                                </p>
-                                <b class="text-white">
-                                    REJECTED
-                                    @if (ViewBag.LeaveRejected != null)
-                                    {
-                                        foreach (var item in ViewBag.LeaveRejected)
-                                        {
-                                            @item["Rejected"];
-                                        }
-                                    }
-
-                                </b>
-                            </div>
-                            <div class="col-6">
-                                <div id="dash2" class="text-right"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-12">
-                <div class="card bg-purple text-white" style="height:250px">
-                    <div class="card-body">
-                        <h5 class="card-title">UPCOMING BIRTHDAYS</h5>
-                        <div id="myCarouse2" class="carousel slide" style="line-height: 15px;" data-ride="carousel">
-                            <!-- Carousel items -->
-                            <div class="carousel-inner">
-
-                                @if (ViewBag.Birthday != null)
-                                {
-                                    int i = 0;
-                                    foreach (var item in ViewBag.Birthday)
-                                    {
-                                        if (i == 0)
-                                        {
-                                            <div class="carousel-item active">
-                                                <h4 class="light_op_text">@item["CustomerName"]</h4>
-                                                <h4 class="light_op_text">@item["BirthDay"]</h4>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="carousel-item">
-                                                <h4 class="light_op_text">@item["CustomerName"]</h4>
-                                                <h4 class="light_op_text">@item["BirthDay"]</h4>
-                                            </div>
-                                        }
-                                        i++;
-                                    }
-                                }
-                            </div>
-                            <a class="carousel-control-prev" href="#myCarouse2" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#myCarouse2" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-12">
-                <div class="card bg-success text-white" style="height:250px">
-                    <div class="card-body">
-                        <h5 class="card-title">NOTIFICATIONS</h5>
-                        <br>  <h5 class="card-title" style="line-height:23px;"></h5></br>
-                        <div id="myCarouse3" class="carousel slide" data-ride="carousel">
-                            <!-- Carousel items -->
-
-                            <div class="carousel-inner">
-                                @if (ViewBag.Notification != null)
-                                {
-                                    int i = 0;
-                                    foreach (var item in ViewBag.Notification)
-                                    {
-                                        if (i == 0)
-                                        {
-                                            <div class="carousel-item active">
-                                                <h4 class="light_op_text">@item["Message"]</h4>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="carousel-item">
-                                                <h4 class="light_op_text">@item["Message"]</h4>
-                                            </div>
-                                        }
-                                        i++;
-                                    }
-                                }
-                            </div>
-                            <a class="carousel-control-prev" href="#myCarouse3" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#myCarouse3" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-
-                        </br><br class="text-white"></br>
-                    </div>
-                </div>
-            </div>
-            <!-- Column -->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Sales Statistics</h3>
+            <h5 class="card-subtitle">Graphical reprensentation of monthly sales</h5>
         </div>
+        <div id="chartdiv">
+
+        </div>
+        <!-- Column -->
     </div>
-
-
 </div>
-
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <h2>Sales Statistics</h2>
-            </div>
-            <div id="chartdiv">
-
-            </div>
-            <!-- Column -->
-        </div>
-    </div>
 
 
 </div>

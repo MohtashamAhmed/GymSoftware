@@ -15549,7 +15549,7 @@ address, legend {
 }
 
 .skin-megna .topbar {
-    background: #3b4040;
+    background: #e41111;
 }
 
     .skin-megna .topbar .top-navbar .navbar-header .navbar-brand .dark-logo {
@@ -15562,12 +15562,12 @@ address, legend {
     }
 
 .skin-megna .page-titles .breadcrumb .breadcrumb-item.active, .skin-megna .sidebar-nav ul li a.active, .skin-megna .sidebar-nav ul li a.active i, .skin-megna .sidebar-nav ul li a:hover, .skin-megna .sidebar-nav ul li a:hover i, .skin-megna .sidebar-nav > ul > li.active > a i {
-    color: #000000;
+    color: #e41111;
 }
 
 .skin-megna .sidebar-nav > ul > li.active > a {
-    color: #000000;
-    border-color: #000000 !important;
+    color: #e41111;
+    border-color: #e41111 !important;
 }
 
 .skin-purple .topbar {
@@ -28057,6 +28057,7 @@ ul.list-style-none {
 
 .card {
     margin-bottom: 20px;
+    background-color: seashell;
 }
 
     .card .card-subtitle {
@@ -28470,7 +28471,7 @@ ul.list-style-none {
         }
 
             .sidebar-nav ul li a {
-                color: #8d97ad;
+                color: #000000;
                 padding: 10px 35px 10px 15px;
                 display: block;
                 align-items: center;
@@ -29861,7 +29862,7 @@ ul#themecolors li, ul#themecolors li a {
 }
 
     .dataTables_filter input, .dataTables_filter input:focus, .dataTables_length select, .dataTables_length select:focus {
-        background-image: linear-gradient(#fb9678,#fb9678),linear-gradient(#e9ecef,#e9ecef);
+        background-image: linear-gradient(#fb9678,#fb9678),linear-gradient(#888a8c,#888a8c);
     }
 
 .dataTables_length {
@@ -31659,4 +31660,14 @@ html body .navbar-dark .mailbox .message-center {
     .hidden-md-down {
         display: none;
     }
+}
+
+.tableheadcolor {
+    background-color: #423b3b;
+    color: white;
+    cursor: pointer;
+}
+
+.tbodybgcolor {
+    background-color: white;
 }
