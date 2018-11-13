@@ -90,7 +90,7 @@ namespace GymSoftware.Controllers
 
             Response.ClearContent();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.AddHeader("content-disposition", "attachment; filename=CustomerDetails.xls");
             Response.ContentType = "application/ms-excel";
 
             Response.Charset = "";

@@ -104,6 +104,7 @@ namespace Service
                 UM.BatchName = row.Field<string>("BatchName");
                 UM.Payment = row.Field<int>("Payment");
                 UM.Outstanding = row.Field<int>("Outstanding");
+                UM.TotalPayment = (UM.Payment + UM.Outstanding).ToString();
                 UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
                 UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
                 UserList.Add(UM);
