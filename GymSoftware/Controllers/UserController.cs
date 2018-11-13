@@ -75,12 +75,13 @@ namespace GymSoftware.Controllers
             var log = _service.Login(UM);
             return View();
         }
+
         public ActionResult Receipts()
         {
             var Receipts = _service.Receipts();
             return View(Receipts);
         }
-        [HttpPost]
+
         public ActionResult ExportToExcel()
         {
             var gv = new GridView();

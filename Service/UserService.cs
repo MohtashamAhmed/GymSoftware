@@ -218,21 +218,18 @@ namespace Service
             //}
             foreach (DataRow row in dt.Rows)
             {
-<<<<<<< HEAD
                Receipts TR = new Receipts();
                 TR.CustomerName = row.Field<string>("CustomerName");
                 TR.TotalReceipts = row.Field<string>("TotalReceipts");
                 TR.Date = row.Field<DateTime>("Date");
                 TR.TotalAmount = row.Field<string>("TotalAmount");
                 Receipts.Add(TR);
-=======
                 CustomerRegistration UM = new CustomerRegistration();
                 UM.Name = row.Field<string>("Name");
                 UM.Payment = row.Field<int>("Payment");
                 UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
                 UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
                 UserList.Add(UM);
->>>>>>> b618bbee0c55cee59d55695092038c9619b329af
             }
             return UserList;
         }

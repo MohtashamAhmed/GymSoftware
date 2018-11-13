@@ -3,56 +3,7 @@
     ViewBag.Title = "GetAllCustomers";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-<<<<<<< HEAD
-@using (Html.BeginForm("ExportToExcel", "User", FormMethod.Post))
-{<div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Registered Customers</h4>
-            <h6 class="card-subtitle">Can also search or sort by any column</h6>
-            <table class="table table-striped table-bordered" id="Cust_Rec">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Mobile</th>
-                        <th>Email</th>
-                        <th>Membership</th>
-                        <th>Batch Timings</th>
-                        <th>Payment</th>
-                        <th>Payment Date</th>
-                        <th>Expiry Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr class="gradeX">
-                            <td>@item.Name</td>
-                            <td>@item.Mobile</td>
-                            <td>@item.Email</td>
-                            <td>@item.MembershipName</td>
-                            <td>@item.BatchName</td>
-                            <td>@item.Payment</td>
-                            <td>@item.DateOfPayment.ToShortDateString()</td>
-                            <td>@item.ExpiryDate.ToShortDateString()</td>
-                        </tr>
-                    }
-                    <tr>
-
-                        <td colspan="4">
-                            <br />
-                            <br />
-                            <input type="submit" value="Export to Excel" class="button" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <script src="~/Content/Script/jquery-3.2.1.min.js"></script>
-    <script src="~/Content/Script/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-=======
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Registered Customers</h4>
@@ -62,11 +13,11 @@
                 <tr>
                     <th>Name</th>
                     <th>Mobile</th>
-                    <th>Email</th>
                     <th>Membership</th>
-                    <th>Batch</th>
+                    <th>Batch Timings</th>
                     <th>Payment</th>
-                    <th>Outstanding</th>
+                    <th>Payment Date</th>
+                    <th>Expiry Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -77,92 +28,89 @@
                     <tr class="gradeX">
                         <td>@item.Name</td>
                         <td>@item.Mobile</td>
-                        <td>@item.Email</td>
                         <td>@item.MembershipName</td>
                         <td>@item.BatchName</td>
                         <td>@item.Payment</td>
-                        <td>@item.Outstanding</td>
+                        <td>@item.DateOfPayment.ToShortDateString()</td>
+                        <td>@item.ExpiryDate.ToShortDateString()</td>
                         <td>
                             <a href="#" class="Editpopup" title="Edit Bill" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
                                data-totpayment="@item.TotalPayment" data-payment="@item.Payment" data-outs="@item.Outstanding">
-                                <button class="btn btn-default @cls">Edit</button>
+                               <button class="btn btn-default @cls">Edit</button>
                             </a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-    </div>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Update Payment Details</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="card card-body">
-                        <div class="row">
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
+        <div><a href="@Url.Action("ExportToExcel","User")"><input type="submit" value="Export to Excel" class="btn btn-success waves-effect waves-light m-r-10" /></a></div>
+        @*<div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Update Payment Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Amount</label>
+                                        @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Amount" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Payment</label>
+                                        @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Outstanding</label>
+                                        @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding" })
+                                    </div>
+                                    <center>
+                                        <button type="button" id="cleardue" class="btn btn-default">Clear Dues</button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Update</button>
+                                    </center>
                                 </div>
-                                <div class="form-group">
-                                    <label>Mobile</label>
-                                    @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Total Amount</label>
-                                    @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Amount" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Payment</label>
-                                    @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Outstanding</label>
-                                    @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding" })
-                                </div>
-                                <center>
-                                    <button type="button" id="cleardue" class="btn btn-default">Clear Dues</button>
-                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Update</button>
-                                </center>
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
-
-        </div>
+        </div>*@
     </div>
-
 </div>
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Content/Script/jquery.dataTables.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 
 <script type="text/javascript">
->>>>>>> b618bbee0c55cee59d55695092038c9619b329af
     $(document).ready(function () {
         $('#Cust_Rec').DataTable({
             "bLengthChange": false,
             "pagingType": "full_numbers"
         });
     });
-<<<<<<< HEAD
-    </script> }
-=======
     $('.Editpopup').click(function () {
+        debugger;
         var name = $(this).attr('data-name');
         var email = $(this).attr('data-email');
         var mobile = $(this).attr('data-mobile');
@@ -187,6 +135,4 @@
         $('#Payment').val(finalamt);
         $('#Outstanding').val(0);
     })
-
 </script>
->>>>>>> b618bbee0c55cee59d55695092038c9619b329af
