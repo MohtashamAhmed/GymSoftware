@@ -225,15 +225,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\error-pages.css" />
     <Content Include="Content\GYMIMG.jpg" />
     <Content Include="Content\Images\1.jpg" />
+    <Content Include="Content\Images\newerror.png" />
     <Content Include="Content\img1.jpg" />
     <Content Include="Content\login-register-lock.css" />
     <Content Include="Content\Script\bootstrap.min.js" />
     <Content Include="Content\Script\custom.min.js" />
     <Content Include="Content\Script\jquery-3.2.1.min.js" />
+    <Content Include="Content\Script\jquery-asColor.js" />
+    <Content Include="Content\Script\jquery-asColorPicker.min.js" />
+    <Content Include="Content\Script\jquery-asGradient.js" />
     <Content Include="Content\Script\jquery.dataTables.min.js" />
     <Content Include="Content\Script\jquery.sparkline.min.js" />
     <Content Include="Content\Script\perfect-scrollbar.jquery.min.js" />
@@ -244,6 +250,7 @@
     <Content Include="Content\style.min.css" />
     <Content Include="Content\themify-icons-frontend.min.css" />
     <Content Include="Content\themify-icons.min.css" />
+    <Content Include="Error.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\css.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

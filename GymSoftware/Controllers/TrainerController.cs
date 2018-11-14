@@ -21,8 +21,9 @@ namespace GymSoftware.Controllers
         [HttpPost]
         public ActionResult TrainerRegistration(TrainerModel Trainer)
         {
-            string result = _service.TrainerRegistration(Trainer);
-            return View(Trainer);
+            ViewBag.Tmessage = _service.TrainerRegistration(Trainer);
+            ModelState.Clear();
+            return View();
         }
 
         public ActionResult GetAllTrainer()

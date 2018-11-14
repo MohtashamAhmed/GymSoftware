@@ -49,7 +49,7 @@ namespace Service
                 Details["ExistingUser"] = new SqlParameter("ExistingUser", false);
                 int TrainerID = _GenClass.ExecuteCommand("SP_AddPayment", Details);
                 if (TrainerID > 0)
-                    return Registration.Name + " Registered Successfully";
+                    return Registration.Name + " Registered Successfully!!";
             }
             Dictionary<string, SqlParameter> DeleteParam = new Dictionary<string, SqlParameter>();
             DeleteParam["id"] = new SqlParameter("id", CustomerID);

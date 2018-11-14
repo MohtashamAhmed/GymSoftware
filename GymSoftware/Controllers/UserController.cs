@@ -32,9 +32,9 @@ namespace GymSoftware.Controllers
             if (!ModelState.IsValid)
                 return View(Registration);
 
-            var result = _service.CustomerRegistration(Registration);
+            string res = _service.CustomerRegistration(Registration);
             BindDropDowns();
-            return View(Registration);
+            return RedirectToAction("DashboardDetails", "User", new { msg = res });           
         }
 
         public ActionResult GetAllCustomers()
@@ -60,9 +60,10 @@ namespace GymSoftware.Controllers
             ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
         }
 
-        public ActionResult DashboardDetails()
+        public ActionResult DashboardDetails(string msg="")
         {
             //var Dashboard = _service.DashboardDetails();
+            ViewBag.cmessage = msg;
             return View();
         }
 
