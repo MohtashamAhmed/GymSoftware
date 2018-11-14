@@ -100,20 +100,17 @@
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Script/jquery.dataTables.min.js"></script>
 <script src="~/Content/Script/bootstrap.min.js"></script>
-<script src="~/Content/Script/custom.min.js"></script>
-
+<script src="~/Content/Script/jquery.dataTables.min.js"></script>
+@*<script src="~/Content/Script/custom.min.js"></script>*@
 <script type="text/javascript">
     $(document).ready(function () {
-        debugger;
         $('#Cust_Rec').DataTable({
             "bLengthChange": false,
             "pagingType": "full_numbers"
         });
     });
     $('.Editpopup').click(function () {
-        debugger;
         var name = $(this).attr('data-name');
         var email = $(this).attr('data-email');
         var mobile = $(this).attr('data-mobile');
