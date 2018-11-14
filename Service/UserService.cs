@@ -193,15 +193,26 @@ namespace Service
 
             return Graph;
         }
-        public string Login( UserModel UM)
+        public Admin Login(UserModel UM)
         {
+            Admin User = new Admin();
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            var res = _GenClass.ExecuteQuery("", Parameter);
-            return "";
-       }
+            Parameter["username"] = new SqlParameter("username", UM.UserName);
+            Parameter["password"] = new SqlParameter("password", UM.Password);
+            var res = _GenClass.ExecuteQuery("SP_AuthenticateUser", Parameter);
+            if (res == null)
+            return User;
+
+            DataRow row = res.Rows[0];
+            User.AdminID = row.Field<int>("ID");
+            User.Name = row.Field<string>("Name");
+            User.Mobile = row.Field<string>("Mobile");
+            User.Email = row.Field<string>("Email");
+            return User;
+        }
         public List<CustomerRegistration> Receipts()
         {
-            
+
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
             Parameter["Name"] = new SqlParameter("Name", "");
             Parameter["Mobile"] = new SqlParameter("Mobile", "");

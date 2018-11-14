@@ -10,9 +10,11 @@ using CommonUtility;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.IO;
+using System.Web.Security;
 
 namespace GymSoftware.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         UserService _service = new UserService();
@@ -64,18 +66,6 @@ namespace GymSoftware.Controllers
             return View();
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login( UserModel UM)
-        {
-            var log = _service.Login(UM);
-            return View();
-        }
-
         public ActionResult Receipts()
         {
             var Receipts = _service.Receipts();
@@ -85,7 +75,7 @@ namespace GymSoftware.Controllers
         public ActionResult ExportToExcel()
         {
             var gv = new GridView();
-            gv.DataSource = _service.GetAllUser("","");
+            gv.DataSource = _service.GetAllUser("", "");
             gv.DataBind();
 
             Response.ClearContent();

@@ -18,12 +18,8 @@ namespace CommonUtility
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Valid Password")]
-        [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Password")]
-        [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
     }

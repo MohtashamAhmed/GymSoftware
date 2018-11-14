@@ -20489,7 +20489,7 @@ tbody.collapse.show {
     cursor: pointer;
 }
 
-/*button.close {
+button.close {
     padding: 0;
     background-color: transparent;
     border: 0;
@@ -20637,7 +20637,7 @@ tbody.collapse.show {
     .modal-lg {
         max-width: 800px;
     }
-}*/
+}
 
 .tooltip {
     z-index: 1070;

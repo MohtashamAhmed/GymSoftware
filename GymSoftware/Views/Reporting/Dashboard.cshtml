@@ -3,167 +3,233 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<h2>Dashboard</h2>
-<div class="row">
-    <!-- Column -->
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">TOTAL VISIT</h5>
-                <div class="d-flex no-block align-items-center m-t-20 m-b-20">
-                    <div id="sparklinedash"></div>
-                    <div class="ml-auto">
-                        <h2 class="text-success"><i class="fa fa-arrow-up"></i> <span class="counter">8659</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div id="sparkline8" class="sparkchart"></div>
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">Modals</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Modals</li>
+            </ol>
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
         </div>
     </div>
-    <!-- Column -->
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">TOTAL PAGE VIEWS</h5>
-                <div class="d-flex no-block align-items-center m-t-20 m-b-20">
-                    <div id="sparklinedash2"></div>
-                    <div class="ml-auto">
-                        <h2 class="text-purple"><i class="fa fa-arrow-up"></i> <span class="counter">7469</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div id="sparkline8" class="sparkchart"></div>
-        </div>
-    </div>
-    <!-- Column -->
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">UNIQUE VISITOR</h5>
-                <div class="d-flex no-block align-items-center m-t-20 m-b-20">
-                    <div id="sparklinedash3"></div>
-                    <div class="ml-auto">
-                        <h2 class="text-info"><i class="fa fa-arrow-up"></i> <span class="counter">6011</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div id="sparkline8" class="sparkchart"></div>
-        </div>
-    </div>
-    <!-- Column -->
-    <!-- Column -->
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">BOUNCE RATE</h5>
-                <div class="d-flex no-block align-items-center m-t-20 m-b-20">
-                    <div id="sparklinedash4"></div>
-                    <div class="ml-auto">
-                        <h2 class="text-danger"><i class="fa fa-arrow-down"></i> <span class="counter">18%</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div id="sparkline8" class="sparkchart"></div>
-        </div>
-    </div>
-    <!-- Column -->
 </div>
 
 <div class="row">
-    <!-- Column -->
-    <div class="col-lg-12 col-md-12">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">ORDER STATUS</h5>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Invoice</th>
-                            <th>User</th>
-                            <th>Order date</th>
-                            <th>Amount</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Tracking Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link"> Order #53431</a></td>
-                            <td>Steve N. Horton</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 22, 2014</span></td>
-                            <td>$45.00</td>
-                            <td class="text-center">
-                                <div class="label label-table label-success">Paid</div>
-                            </td>
-                            <td class="text-center">-</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link"> Order #53432</a></td>
-                            <td>Charles S Boyle</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 24, 2014</span></td>
-                            <td>$245.30</td>
-                            <td class="text-center">
-                                <div class="label label-table label-info">Shipped</div>
-                            </td>
-                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089734531</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link"> Order #53433</a></td>
-                            <td>Lucy Doe</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 24, 2014</span></td>
-                            <td>$38.00</td>
-                            <td class="text-center">
-                                <div class="label label-table label-info">Shipped</div>
-                            </td>
-                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089934571</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link"> Order #53434</a></td>
-                            <td>Teresa L. Doe</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 15, 2014</span></td>
-                            <td>$77.99</td>
-                            <td class="text-center">
-                                <div class="label label-table label-info">Shipped</div>
-                            </td>
-                            <td class="text-center"><i class="fa fa-plane"></i> CGX0089734574</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link"> Order #53435</a></td>
-                            <td>Teresa L. Doe</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 12, 2014</span></td>
-                            <td>$18.00</td>
-                            <td class="text-center">
-                                <div class="label label-table label-success">Paid</div>
-                            </td>
-                            <td class="text-center">-</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link">Order #53437</a></td>
-                            <td>Charles S Boyle</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 17, 2014</span></td>
-                            <td>$658.00</td>
-                            <td class="text-center">
-                                <div class="label label-table label-danger">Refunded</div>
-                            </td>
-                            <td class="text-center">-</td>
-                        </tr>
-                        <tr>
-                            <td><a href="javascript:void(0)" class="link">Order #536584</a></td>
-                            <td>Scott S. Calabrese</td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 19, 2014</span></td>
-                            <td>$45.58</td>
-                            <td class="text-center">
-                                <div class="label label-table label-warning">Unpaid</div>
-                            </td>
-                            <td class="text-center">-</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4 class="card-title">Large modal <small>Click on image</small></h4>
+                <!-- sample modal content -->
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Overflowing text to show scroll behavior</h4>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <img src="../assets/images/alert/model2.png" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg" class="model_img img-responsive" />
             </div>
         </div>
     </div>
-    <!-- Column -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Medium model <small>Click on image</small></h4>
+                <!-- sample modal content -->
+                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Overflowing text to show scroll behavior</h4>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <img src="../assets/images/alert/model.png" alt="default" data-toggle="modal" data-target="#myModal" class="model_img img-responsive" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Small model <small>Click on image</small></h4>
+                <!-- sample modal content -->
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body"> content will be here </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <img src="../assets/images/alert/model3.png" alt="default" data-toggle="modal" data-target=".bs-example-modal-sm" class="model_img img-responsive" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Responsive model</h4>
+                <!-- sample modal content -->
+                <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal Content is Responsive</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">Recipient:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">Message:</label>
+                                        <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal -->
+                <img src="../assets/images/alert/model.png" alt="default" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Modal based on trigger button</h4>
+                <!-- sample modal content -->
+                <div class="button-box">
+                    @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>*@
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel1">New message</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">Recipient:</label>
+                                        <input type="text" class="form-control" id="recipient-name1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">Message:</label>
+                                        <textarea class="form-control" id="message-text1"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal -->
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="right-sidebar">
+    <div class="slimscrollright">
+        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+        <div class="r-panel-body">
+            <ul id="themecolors" class="m-t-20">
+                <li><b>With Light sidebar</b></li>
+                <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme">4</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme working">6</a></li>
+                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+            </ul>
+            <ul class="m-t-20 chatonline">
+                <li><b>Chat option</b></li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Script/jquery-3.2.1.min.js"></script>
+<script src="~/Content/Script/bootstrap.min.js"></script>
+<script src="~/Content/Script/custom.min.js"></script>

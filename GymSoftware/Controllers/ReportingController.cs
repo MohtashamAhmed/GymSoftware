@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace GymSoftware.Controllers
 {
+    [Authorize]
     public class ReportingController : Controller
     {
         // GET: Reporting

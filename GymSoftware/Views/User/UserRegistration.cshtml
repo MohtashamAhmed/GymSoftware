@@ -3,71 +3,74 @@
     ViewBag.Title = "UserRegistration";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-
 <div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Customer Registration</h4>
-        <h6 class="card-subtitle"></h6><br />
-        <div class="row">
-            <div class="col-sm-12 col-xs-12">
-                @using (Html.BeginForm("UserRegistration", "User", FormMethod.Post, new { @class = "form-horizontal" }))
-            {
-                    <div class="form-group">
-                        <label>Name</label>
-                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <h3 class="box-title m-b-0">Create Customer</h3>
+                <p class="text-muted m-b-30 font-13"> User Registration </p>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        @using (Html.BeginForm("UserRegistration", "User", FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label>Name</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <label>
+                                    @Html.RadioButtonFor(x => x.Gender, "Male", new { id = "gender", @checked = "checked" }) Male
+                                </label>
+                                <label>
+                                    @Html.RadioButtonFor(x => x.Gender, "FeMale", new { id = "gender" }) Female
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                @Html.TextBoxFor(x => x.DateofBirth, new { @class = "form-control", @placeholder = "MM/DD/YYYY" })
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
+                            </div>
+                            <div class="form-group">
+                                <label>Memebership</label>
+                                @Html.DropDownListFor(model => model.MembershipID, ViewBag.Membership as SelectList, "-- Select --", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Batch Tymings</label>
+                                @Html.DropDownListFor(model => model.BatchID, ViewBag.Batchdetails as SelectList, "-- Select --", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Total Payment</label>
+                                @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Payment", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Payment</label>
+                                @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
+                            </div>
+                            <div class="form-group">
+                                <label>Outstanding Amount</label>
+                                @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Weight</label>
+                                @Html.TextBoxFor(x => x.Weight, new { @class = "form-control", @placeholder = "Enter weight" })
+                            </div>
+                            <div class="form-group">
+                                <label>Source</label>
+                                @Html.TextBoxFor(x => x.Source, new { @class = "form-control", @placeholder = "Enter Source" })
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                            <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                        }
                     </div>
-                    <div class="form-group">
-                        <label>Gender</label>
-                        <label>
-                            @Html.RadioButtonFor(x => x.Gender, "Male", new { id = "gender", @checked = "checked" }) Male
-                        </label>
-                        <label>
-                            @Html.RadioButtonFor(x => x.Gender, "FeMale", new { id = "gender" }) Female
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>Date of Birth</label>
-                        @Html.TextBoxFor(x => x.DateofBirth, new { @class = "form-control", @placeholder = "MM/DD/YYYY" })
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
-                    </div>
-                    <div class="form-group">
-                        <label>Mobile</label>
-                        @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
-                    </div>
-                    <div class="form-group">
-                        <label>Memebership</label>
-                        @Html.DropDownListFor(model => model.MembershipID, ViewBag.Membership as SelectList, "-- Select --", new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Batch Tymings</label>
-                        @Html.DropDownListFor(model => model.BatchID, ViewBag.Batchdetails as SelectList, "-- Select --", new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Total Payment</label>
-                        @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Payment", @readonly = "readonly" })
-                    </div>
-                    <div class="form-group">
-                        <label>Payment</label>
-                        @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
-                    </div>
-                    <div class="form-group">
-                        <label>Outstanding Amount</label>
-                        @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding", @readonly = "readonly" })
-                    </div>
-                    <div class="form-group">
-                        <label>Weight</label>
-                        @Html.TextBoxFor(x => x.Weight, new { @class = "form-control", @placeholder = "Enter weight" })
-                    </div>
-                    <div class="form-group">
-                        <label>Source</label>
-                        @Html.TextBoxFor(x => x.Source, new { @class = "form-control", @placeholder = "Enter Source" })
-                    </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                    <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
-            }
+                </div>
             </div>
         </div>
     </div>
