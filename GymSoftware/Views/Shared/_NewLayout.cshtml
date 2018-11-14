@@ -31,16 +31,15 @@
                                 <input type="text" class="form-control" placeholder="Search & enter">
                             </form>
                         </li>
-                        <li><a href="@Url.Action("LogOff","Account")">Logoout</a></li>
                     </ul>
 
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Content/Images/1.jpg" alt="user" class="" /><span class="hidden-md-down">&nbsp; Mark <i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Content/Images/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-user"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                                <a href="@Url.Action("LogOff","Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -52,10 +51,10 @@
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="active">
+                        <li>
                             <a href="@Url.Action("DashboardDetails","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="@Url.Action("UserRegistration","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-user-plus"></i><span class="hide-menu">Create Customer</span></a>
                         </li>
                         <li>
@@ -76,8 +75,7 @@
                     </ul>
                 </nav>
             </div>
-        </aside>
-
+        </aside>        
         <div class="page-wrapper">
 
             <div class="container-fluid">
@@ -88,7 +86,13 @@
         <footer class="footer"><center>© 2018 www.GymSoftware.com. All rights reserved.</center></footer>
 
     </div>
-
+    <script>
+        $('.sidebar-nav').on('click', 'li', function () {
+            debugger;
+            $('.sidebar-nav li').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
     @*<script src="~/Content/Scripts/jquery-3.2.1.min.js"></script>
         <script src="~/Content/Scripts/popper.min.js"></script>
         <script src="~/Content/Scripts/bootstrap.min.js"></script>
