@@ -12,6 +12,8 @@ using GymSoftware.Models;
 using Service;
 using CommonUtility;
 using System.Web.Security;
+using System.Net.Mail;
+using System.Net;
 
 namespace GymSoftware.Controllers
 {
@@ -239,9 +241,28 @@ namespace GymSoftware.Controllers
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword(string Email)
         {
-            return code == null ? View("Error") : View();
+            SendEmail(Email);
+            return View("Login");
+        }
+
+        public void SendEmail(string ToEmail)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("");
+                mail.To.Add(ToEmail);
+                mail.Subject = "";
+                mail.Body = "";
+                mail.IsBodyHtml = false;
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential("", "");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
         }
 
         //
