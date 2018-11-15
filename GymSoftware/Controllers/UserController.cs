@@ -62,9 +62,9 @@ namespace GymSoftware.Controllers
 
         public ActionResult DashboardDetails(string msg="")
         {
-            //var Dashboard = _service.DashboardDetails();
+            var Dashboard = _service.DashboardDetails();
             ViewBag.cmessage = msg;
-            return View();
+            return View(Dashboard);
         }
 
         public ActionResult Receipts()
@@ -81,7 +81,7 @@ namespace GymSoftware.Controllers
 
             Response.ClearContent();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=CustomerDetails.xls");
+            Response.AddHeader("content-disposition", "attachment; filename=Customer Details.xls");
             Response.ContentType = "application/ms-excel";
 
             Response.Charset = "";

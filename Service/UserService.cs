@@ -118,10 +118,23 @@ namespace Service
         {
             DashboardModel Dashboard = new DashboardModel();
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            var res = _GenClass.ExecuteQuery("", Parameter);
+            var res = _GenClass.ExecuteQuery("SP_DashboardCount", Parameter);
             DataRow row = res.Rows[0];
-            Dashboard.UpcomingBirthdays = row["UpcomingBirthdays"].ToString();
-            Dashboard.Notifications = row["Notifications"].ToString();
+            Dashboard.TotalMembers = row["TotalMembers"].ToString();
+            Dashboard.FestiveOffer = row["Offers"].ToString();
+            Dashboard.MonthlySales = row["MonthlySale"].ToString();
+            Dashboard.UpcomingBirthdays = row["Birthdays"].ToString();
+
+            Dashboard.GraphList = new List<Graph>();
+            var Res = _GenClass.ExecuteQuery("SP_Graph", Parameter);
+            foreach (DataRow Row in Res.Rows)
+            {
+                Graph GH = new Graph();
+                int id = Row.Field<int>("Month");
+                GH.Month = Convert.ToString(id);
+                GH.Revenue = Row.Field<int>("Revenue");
+                Dashboard.GraphList.Add(GH);
+            }
             return Dashboard;
         }
         #endregion

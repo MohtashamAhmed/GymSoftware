@@ -9,9 +9,15 @@ namespace CommonUtility
     public class DashboardModel
     {
         public string UpcomingBirthdays { get; set; }
-        public string Notifications { get; set; }
-        public string TotalSales { get; set; }
+        public string TotalMembers { get; set; }
+        public string MonthlySales { get; set; }
         public string FestiveOffer { get; set; }
+        public List<Graph> GraphList { get; set; }
+    }
 
+    public class Graph
+    {
+        public string Month { get; set; }
+        public int Revenue { get; set; }
     }
 }
