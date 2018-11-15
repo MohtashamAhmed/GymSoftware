@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace GymSoftware.Controllers
 {
     [Authorize]
-    public class TrainerController : Controller
+    public class TrainerController : BaseController
     {
         TrainerService _service = new TrainerService();
         public ActionResult TrainerRegistration()

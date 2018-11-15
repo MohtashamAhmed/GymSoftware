@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace GymSoftware.Controllers
 {
     [Authorize]
-    public class ReportingController : Controller
+    public class ReportingController : BaseController
     {
         // GET: Reporting
         public ActionResult Dashboard()

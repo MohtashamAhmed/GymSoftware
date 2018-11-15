@@ -15,7 +15,7 @@ using System.Web.Security;
 namespace GymSoftware.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         UserService _service = new UserService();
 
