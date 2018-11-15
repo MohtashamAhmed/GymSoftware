@@ -14,8 +14,8 @@ namespace Service
         {
             string Riacnstr = "Data Source=DESKTOP-6H0DS1N;Initial Catalog=GymSoftware;Integrated Security=True";
             string Syedcnstr = "Data Source=MOHTASHAM-PC;Initial Catalog=GymSoftware;Integrated Security=True";
-            SqlConnection cn = new SqlConnection(Syedcnstr);
-            //SqlConnection cn = new SqlConnection(Riacnstr);
+            //SqlConnection cn = new SqlConnection(Syedcnstr);
+            SqlConnection cn = new SqlConnection(Riacnstr);
             cn.Open();
             return cn;
         }

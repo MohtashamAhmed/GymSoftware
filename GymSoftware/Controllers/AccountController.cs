@@ -251,14 +251,14 @@ namespace GymSoftware.Controllers
         {
             using (MailMessage mail = new MailMessage())
             {
-                mail.From = new MailAddress("");
+                mail.From = new MailAddress("luckyriya15Nov2018@gmail.com");
                 mail.To.Add(ToEmail);
-                mail.Subject = "";
-                mail.Body = "";
+                mail.Subject = "Gym Software_Reset_Password";
+                mail.Body = "Your Temporary Password is 1234.Please change after login";
                 mail.IsBodyHtml = false;
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
-                    smtp.Credentials = new NetworkCredential("", "");
+                    smtp.Credentials = new NetworkCredential("luckyriya15Nov2018@gmail.com", "luri@9293");
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
                 }
