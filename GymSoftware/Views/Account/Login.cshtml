@@ -20,6 +20,13 @@
         <div class="login-box card" style="background-color:seashell;">
             <div class="card-body">
                 <h4>Gym Management</h4>
+                @if (ViewBag.mailmessage != "" && ViewBag.mailmessage!= null)
+                {
+                    <div class="alert alert-info">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <h3 class="text-info"><i class="fa fa-check-circle"></i> Success</h3> @ViewBag.mailmessage 
+                    </div>
+                }
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "loginform", @class = "form-horizontal form-material" }))
                 {
                     @Html.AntiForgeryToken()

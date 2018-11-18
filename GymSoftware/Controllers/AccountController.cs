@@ -244,6 +244,7 @@ namespace GymSoftware.Controllers
         public ActionResult ResetPassword(string Email)
         {
             SendEmail(Email);
+            ViewBag.mailmessage = "Temporary Password sent to your EmailID.";
             return View("Login");
         }
 
@@ -253,7 +254,7 @@ namespace GymSoftware.Controllers
             {
                 mail.From = new MailAddress("luckyriya15Nov2018@gmail.com");
                 mail.To.Add(ToEmail);
-                mail.Subject = "Gym Software_Reset_Password";
+                mail.Subject = "Gym Software Reset Password";
                 mail.Body = "Your Temporary Password is 1234.Please change after login";
                 mail.IsBodyHtml = false;
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
