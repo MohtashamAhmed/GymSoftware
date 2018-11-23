@@ -48,7 +48,14 @@ namespace Service
             return Trainers;
         }
 
-
+        public bool CheckMobile(string mobile,string name)
+        {
+            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            Parameter["mobile"] = new SqlParameter("mobile", mobile);
+            Parameter["name"] = new SqlParameter("name", name);
+            DataTable dt = _GenClass.ExecuteQuery("SP_CheckMobile", Parameter);
+            return dt != null && dt.Rows.Count > 0 ? false : true;
+        }
 
     }
 }

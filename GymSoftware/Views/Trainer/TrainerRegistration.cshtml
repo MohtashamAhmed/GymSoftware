@@ -24,10 +24,10 @@
         }
         <h4 class="card-title">Trainer Registration</h4>
         <p class="card-subtitle"></p><br />
-        <div class="row">
-            <div class="col-sm-12 col-xs-12">
-                @using (Html.BeginForm("TrainerRegistration", "Trainer", FormMethod.Post, new { @class = "form-horizontal" }))
+        @using (Html.BeginForm("TrainerRegistration", "Trainer", FormMethod.Post, new { @class = "form-horizontal" }))
             {
+            <div class="row">
+                <div class="col-sm-6 col-xs-6">
                     <div class="form-group">
                         <label>Trainer Name</label>
                         @Html.TextBoxFor(x => x.TrainerName, new { @class = "form-control", @placeholder = "Enter Your Name" })
@@ -40,6 +40,8 @@
                             <option value="female">Female</option>
                         </select>
                     </div>
+                </div>
+                <div class="col-sm-6 col-xs-6">
                     <div class="form-group">
                         <label>Mobile</label>
                         @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
@@ -48,12 +50,18 @@
                         <label>Email</label>
                         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
                     </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Register</button>
-                    <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
-                }
+                </div>
+                <div class="col-md-12">
+                    <center>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Register</button>
+                        <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                    </center>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Content/Script/bootstrap.min.js"></script>

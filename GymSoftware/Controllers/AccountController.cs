@@ -28,7 +28,7 @@ namespace GymSoftware.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +40,9 @@ namespace GymSoftware.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -63,8 +63,14 @@ namespace GymSoftware.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            UserModel model = new UserModel();
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if (Request.Cookies["Login"] != null)
+            {
+                model.UserName = Request.Cookies["Login"].Values["UserName"];
+                model.Password = Request.Cookies["Login"].Values["Password"];
+            }
+            return View(model);
         }
 
         //
@@ -75,27 +81,29 @@ namespace GymSoftware.Controllers
         public async Task<ActionResult> Login(UserModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
             var user = _service.Login(model);
-
-
-            if (user != null)
+            if (user != null && user.AdminID > 0)
             {
                 FormsAuthentication.SetAuthCookie(model.UserName, false);
-
-                var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false,"");
+                var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, "");
                 string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                 var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                 HttpContext.Response.Cookies.Add(authCookie);
+                if (model.Rememberme)
+                {
+                    HttpCookie cookie = new HttpCookie("Login");
+                    cookie.Values.Add("UserName", model.UserName);
+                    cookie.Values.Add("Password", model.Password);
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+                }
                 return RedirectToAction("UserRegistration", "User");
             }
-
             else
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("Password", "Invalid username or password.");
                 return View(model);
             }
         }
@@ -129,7 +137,7 @@ namespace GymSoftware.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -164,8 +172,8 @@ namespace GymSoftware.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

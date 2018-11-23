@@ -214,7 +214,7 @@ namespace Service
             Parameter["password"] = new SqlParameter("password", UM.Password);
             var res = _GenClass.ExecuteQuery("SP_AuthenticateUser", Parameter);
             if (res == null)
-            return User;
+                return User;
 
             DataRow row = res.Rows[0];
             User.AdminID = row.Field<int>("ID");

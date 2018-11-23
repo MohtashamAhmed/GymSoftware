@@ -31,5 +31,12 @@ namespace GymSoftware.Controllers
             var Trainerslist = _service.GetAllTrainers();
             return View(Trainerslist);
         }
+
+        [HttpPost]
+        public JsonResult CheckMobile(string Mobile)
+        {
+            var data = _service.CheckMobile(Mobile, "trainer");
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }

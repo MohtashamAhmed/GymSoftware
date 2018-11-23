@@ -18,6 +18,7 @@ namespace GymSoftware.Controllers
     public class UserController : BaseController
     {
         UserService _service = new UserService();
+        TrainerService _Trservice = new TrainerService();
 
         public ActionResult UserRegistration()
         {
@@ -29,12 +30,12 @@ namespace GymSoftware.Controllers
         [HttpPost]
         public ActionResult UserRegistration(CustomerRegistration Registration)
         {
+            BindDropDowns();
             if (!ModelState.IsValid)
                 return View(Registration);
 
             string res = _service.CustomerRegistration(Registration);
-            BindDropDowns();
-            return RedirectToAction("DashboardDetails", "User", new { msg = res });           
+            return RedirectToAction("DashboardDetails", "User", new { msg = res });
         }
 
         public ActionResult GetAllCustomers()
@@ -60,7 +61,7 @@ namespace GymSoftware.Controllers
             ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
         }
 
-        public ActionResult DashboardDetails(string msg="")
+        public ActionResult DashboardDetails(string msg = "")
         {
             var Dashboard = _service.DashboardDetails();
             ViewBag.cmessage = msg;
@@ -97,5 +98,20 @@ namespace GymSoftware.Controllers
             return View("");
 
         }
+
+        [HttpPost]
+        public JsonResult CheckMobile(string Mobile)
+        {
+            var data = _Trservice.CheckMobile(Mobile,"user");
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult dsdata()
+        {
+            var Dashboard = _service.DashboardDetails();
+            return Json(Dashboard.GraphList,JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
