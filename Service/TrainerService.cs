@@ -20,7 +20,6 @@ namespace Service
             Parameter["Gender"] = new SqlParameter("Gender", Trainer.Gender);
             Parameter["Mobile"] = new SqlParameter("Mobile", Trainer.Mobile);
             Parameter["Email"] = new SqlParameter("Email", Trainer.Email);
-            Parameter["JoinDate"] = new SqlParameter("JoinDate", DateTime.Now);
             int id = _GenClass.ExecuteCommand("SP_AddTrainer", Parameter);
             if (id > 0)
                 return Trainer.TrainerName + " Registered Successfully!!";
@@ -48,7 +47,7 @@ namespace Service
             return Trainers;
         }
 
-        public bool CheckMobile(string mobile,string name)
+        public bool CheckMobile(string mobile, string name)
         {
             Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
             Parameter["mobile"] = new SqlParameter("mobile", mobile);
