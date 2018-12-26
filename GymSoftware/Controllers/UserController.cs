@@ -20,6 +20,8 @@ namespace GymSoftware.Controllers
         UserService _service = new UserService();
         TrainerService _Trservice = new TrainerService();
 
+        #region Customer Registration
+
         public ActionResult UserRegistration()
         {
             CustomerRegistration Registration = new CustomerRegistration();
@@ -38,11 +40,12 @@ namespace GymSoftware.Controllers
             return RedirectToAction("DashboardDetails", "User", new { msg = res });
         }
 
-        public ActionResult GetAllCustomers()
+        public void BindDropDowns()
         {
-            CustomerRegistration Model = new CustomerRegistration();
-            Model.UsersList = _service.GetAllUser("", "");
-            return View(Model);
+            var membershipdropdown = _service.GetMembershipDetails();
+            var Batchdropdown = _service.GetBatchDetails();
+            ViewBag.Membership = new SelectList(membershipdropdown, "ID", "Name");
+            ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
         }
 
         [HttpPost]
@@ -53,25 +56,38 @@ namespace GymSoftware.Controllers
             return Json(new { price = Price, JsonRequestBehavior.AllowGet });
         }
 
-        public void BindDropDowns()
+        [HttpPost]
+        public JsonResult CheckMobile(string Mobile)
         {
-            var membershipdropdown = _service.GetMembershipDetails();
-            var Batchdropdown = _service.GetBatchDetails();
-            ViewBag.Membership = new SelectList(membershipdropdown, "ID", "Name");
-            ViewBag.Batchdetails = new SelectList(Batchdropdown, "ID", "BatchName");
+            var data = _Trservice.CheckMobile(Mobile, "user");
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        #endregion
+
+        #region Dashboard 
 
         public ActionResult DashboardDetails(string msg = "")
         {
-            var Dashboard = _service.DashboardDetails();
+            var Dashboard = _service.DashboardBoxCount();
             ViewBag.cmessage = msg;
             return View(Dashboard);
         }
 
-        public ActionResult Receipts()
+        [HttpPost]
+        public JsonResult dsdata()
         {
-            var Receipts = _service.Receipts();
-            return View(Receipts);
+            var Dashboard = _service.DashboardGraph();
+            return Json(Dashboard.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        public ActionResult GetAllCustomers()
+        {
+            CustomerRegistration Model = new CustomerRegistration();
+            Model.UsersList = _service.GetAllUser("", "");
+            return View(Model);
         }
 
         public ActionResult ExportToExcel()
@@ -99,18 +115,19 @@ namespace GymSoftware.Controllers
 
         }
 
-        [HttpPost]
-        public JsonResult CheckMobile(string Mobile)
+        public ActionResult Receipts()
         {
-            var data = _Trservice.CheckMobile(Mobile,"user");
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return View(_service.Receipts());
         }
 
-        [HttpPost]
-        public JsonResult dsdata()
+        public ActionResult Reminders()
         {
-            var Dashboard = _service.DashboardDetails();
-            return Json(Dashboard.GraphList,JsonRequestBehavior.AllowGet);
+            return View(_service.GetEmailList());
+        }
+
+        public ActionResult MyProfile()
+        {
+            return View();
         }
 
     }

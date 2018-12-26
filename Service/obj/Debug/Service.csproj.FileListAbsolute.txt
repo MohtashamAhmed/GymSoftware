@@ -14,3 +14,6 @@ C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Debug\Service.dll
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Debug\Service.pdb
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Mvc.dll
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Mvc.xml
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\MySql.Data.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\Google.Protobuf.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\MySql.Data.xml

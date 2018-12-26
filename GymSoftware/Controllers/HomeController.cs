@@ -27,7 +27,42 @@ namespace GymSoftware.Controllers
 
             return View();
         }
-      
+
+        public ActionResult DashboardDetails()
+        {
+            return View();
+        }
+
+        public ActionResult UserRegistration()
+        {
+            return View();
+        }
+
+        public ActionResult TrainerRegistration()
+        {
+            return View();
+        }
+
+        public ActionResult GetAllCustomers()
+        {
+            return View();
+        }
+
+        public ActionResult GetAllTrainer()
+        {
+            return View();
+        }
+
+        public ActionResult Receipts()
+        {
+            return View();
+        }
+
+        public ActionResult Reminders()
+        {
+            return View();
+        }
+
 
     }
 }

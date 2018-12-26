@@ -12,7 +12,6 @@ namespace CommonUtility
         public string TotalMembers { get; set; }
         public string MonthlySales { get; set; }
         public string FestiveOffer { get; set; }
-        public List<Graph> GraphList { get; set; }
     }
 
     public class Graph

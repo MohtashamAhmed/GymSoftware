@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    @*<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">*@
+    <title>Gym Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="horizontal-nav skin-megna fixed-layout">
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><b>Gym Management</b></a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-sm-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                        <li class="nav-item">
+                            <form class="app-search d-none d-md-block d-lg-block">
+                                <input type="text" class="form-control" placeholder="Search & enter">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Content/Images/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <a href="@Url.Action("MyProfile", "User")" class="dropdown-item"><i class="fa fa-user"></i> My Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="@Url.Action("LogOff","Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a href="@Url.Action("DashboardDetails","User")" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a href="@Url.Action("UserRegistration","User")" aria-expanded="false"><i class="fa fa-user-plus"></i><span class="hide-menu">Create Customer</span></a></li>
+                        <li> <a href="@Url.Action("TrainerRegistration","Trainer")" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Create Trainer</span></a></li>
+                        <li> <a href="@Url.Action("GetAllCustomers","User")" aria-expanded="false"><i class="fa fa-bars"></i><span class="hide-menu">View Customers</span></a></li>
+                        <li> <a href="@Url.Action("GetAllTrainer","Trainer")" aria-expanded="false"><i class="fa fa-server"></i><span class="hide-menu">View Trainers</span></a></li>
+                        <li> <a href="@Url.Action("Receipts","User")" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Total Receipts</span></a></li>
+                        <li> <a href="@Url.Action("Reminders","User")" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Send Emails</span></a></li>
+                        <li> <a href="#" aria-expanded="false"><i class="fa fa-gift"></i><span class="hide-menu">Festive Offers</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <script src="~/Scripts/jquery-1.10.2.js"></script>
+                                <script src="~/Scripts/jquery.validate.min.js"></script>
+                                <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+                                <script src="~/Content/Script/jquery.dataTables.min.js"></script>
+                                <script src="~/Content/Script/popper.min.js"></script>
+                                <script src="~/Content/Script/bootstrap.min.js"></script>
+                                <script src="~/Content/Script/perfect-scrollbar.jquery.min.js"></script>
+                                <script src="~/Content/Script/waves.js"></script>
+                                <script src="~/Content/Script/sidebarmenu.js"></script>
+                                <script src="~/Content/Script/sticky-kit.min.js"></script>
+                                <script src="~/Content/Script/jquery.sparkline.min.js"></script>
+                                <script src="~/Content/Script/custom.min.js"></script>
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            © 2018 Eliteadmin by themedesigner.in
+        </footer>
+    </div>
+</body>
+
+</html>

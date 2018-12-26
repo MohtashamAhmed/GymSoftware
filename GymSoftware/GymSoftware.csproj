@@ -320,6 +320,13 @@
     <Content Include="Views\User\DashboardDetails.cshtml" />
     <Content Include="Views\User\Receipts.cshtml" />
     <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\User\Reminders.cshtml" />
+    <Content Include="Views\Shared\_GymLayout.cshtml" />
+    <Content Include="Views\Home\DashboardDetails.cshtml" />
+    <Content Include="Views\Home\UserRegistration.cshtml" />
+    <Content Include="Views\Home\TrainerRegistration.cshtml" />
+    <Content Include="Views\Home\GetAllCustomers.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

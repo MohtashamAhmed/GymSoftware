@@ -1,4 +1,5 @@
 ﻿using CommonUtility;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,49 +12,50 @@ namespace Service
 {
     public class UserService
     {
-        private static GenericClass _GenClass = new GenericClass();
+        //private static GenericClass _GenClass = new GenericClass();
+        private static NewGenericClass _GenClassnew = new NewGenericClass();
 
         public void test()
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
             //Parameter["name"] = new SqlParameter("name", "Smith");
-            _GenClass.ExecuteCommand("", Parameter);
+            _GenClassnew.ExecuteCommand("", Parameter);
         }
 
         #region Customer Registration
         public string CustomerRegistration(CustomerRegistration Registration)
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["Name"] = new SqlParameter("Name", Registration.Name);
-            Parameter["Gender"] = new SqlParameter("Gender", Registration.Gender);
-            Parameter["DOB"] = new SqlParameter("DOB", Registration.DateofBirth);
-            Parameter["Mobile"] = new SqlParameter("Mobile", Registration.Mobile);
-            Parameter["Email"] = new SqlParameter("Email", Registration.Email);
-            Parameter["Weight"] = new SqlParameter("Weight", Registration.Weight);
-            Parameter["Source"] = new SqlParameter("Source", Registration.Source);
-            Parameter["JoinDate"] = new SqlParameter("JoinDate", DateTime.Now);
-            int CustomerID = _GenClass.ExecuteCommand("SP_AddCustomer", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["Nam"] = new MySqlParameter("Nam", Registration.Name);
+            Parameter["Gen"] = new MySqlParameter("Gen", Registration.Gender);
+            Parameter["BirthD"] = new MySqlParameter("BirthD", Registration.DateofBirth);
+            Parameter["Mob"] = new MySqlParameter("Mob", Registration.Mobile);
+            Parameter["Ema"] = new MySqlParameter("Ema", Registration.Email);
+            Parameter["Weigh"] = new MySqlParameter("Weigh", Registration.Weight);
+            Parameter["scr"] = new MySqlParameter("scr", Registration.Source);
+            Parameter["JoinD"] = new MySqlParameter("JoinD", DateTime.Now);
+            int CustomerID = _GenClassnew.ExecuteCommand("SP_AddCustomer", Parameter);
             if (CustomerID > 0)
             {
-                Dictionary<string, SqlParameter> Details = new Dictionary<string, SqlParameter>();
+                Dictionary<string, MySqlParameter> Details = new Dictionary<string, MySqlParameter>();
                 int Tid = Registration.TrainerID != null ? Registration.TrainerID : 0;
-                Details["CustomerID"] = new SqlParameter("CustomerID", CustomerID);
-                Details["MembershipID"] = new SqlParameter("MembershipID", Registration.MembershipID);
-                Details["BatchID"] = new SqlParameter("BatchID", Registration.BatchID);
-                Details["TotalPayment"] = new SqlParameter("TotalPayment", Registration.TotalPayment);
-                Details["Payment"] = new SqlParameter("Payment", Registration.Payment);
-                Details["Outstanding"] = new SqlParameter("Outstanding", Registration.Outstanding);
-                Details["DateOfPayment"] = new SqlParameter("DateOfPayment", DateTime.Now);
-                Details["ExpiryDate"] = new SqlParameter("ExpiryDate", GetMembershipExpDate(DateTime.Now, Registration.MembershipID));
-                Details["TrainerID"] = new SqlParameter("TrainerID", Tid);
-                Details["ExistingUser"] = new SqlParameter("ExistingUser", false);
-                int TrainerID = _GenClass.ExecuteCommand("SP_AddPayment", Details);
+                Details["CustID"] = new MySqlParameter("CustID", CustomerID);
+                Details["MemID"] = new MySqlParameter("MemID", Registration.MembershipID);
+                Details["BID"] = new MySqlParameter("BID", Registration.BatchID);
+                Details["TotalP"] = new MySqlParameter("TotalP", Registration.TotalPayment);
+                Details["Pay"] = new MySqlParameter("Pay", Registration.Payment);
+                Details["Outs"] = new MySqlParameter("Outs", Registration.Outstanding);
+                Details["Dop"] = new MySqlParameter("Dop", DateTime.Now);
+                Details["ExDate"] = new MySqlParameter("ExDate", GetMembershipExpDate(DateTime.Now, Registration.MembershipID));
+                Details["TID"] = new MySqlParameter("TID", Tid);
+                //Details["ExistingUser"] = new MySqlParameter("ExistingUser", false);
+                int TrainerID = _GenClassnew.ExecuteCommand("SP_AddPayment", Details);
                 if (TrainerID > 0)
                     return Registration.Name + " Registered Successfully!!";
             }
-            Dictionary<string, SqlParameter> DeleteParam = new Dictionary<string, SqlParameter>();
-            DeleteParam["id"] = new SqlParameter("id", CustomerID);
-            _GenClass.ExecuteCommand("SP_DeleteUser", DeleteParam);
+            Dictionary<string, MySqlParameter> DeleteParam = new Dictionary<string, MySqlParameter>();
+            DeleteParam["custid"] = new MySqlParameter("custid", CustomerID);
+            _GenClassnew.ExecuteCommand("SP_DeleteUser", DeleteParam);
             return "Registration Failed";
         }
 
@@ -89,10 +91,10 @@ namespace Service
         #region Retrieving All Users
         public List<DisplayCustomers> GetAllUser(string Name, string MobileNo)
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["Name"] = new SqlParameter("Name", Name);
-            Parameter["Mobile"] = new SqlParameter("Mobile", MobileNo);
-            DataTable dt = _GenClass.ExecuteQuery("SP_CustomerDetails", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["Nam"] = new MySqlParameter("Nam", Name);
+            Parameter["Mob"] = new MySqlParameter("Mob", MobileNo);
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_CustomerDetails", Parameter);
             List<DisplayCustomers> UserList = new List<DisplayCustomers>();
             foreach (DataRow row in dt.Rows)
             {
@@ -114,36 +116,41 @@ namespace Service
         #endregion
 
         #region Dashboard
-        public DashboardModel DashboardDetails()
+        public DashboardModel DashboardBoxCount()
         {
             DashboardModel Dashboard = new DashboardModel();
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            var res = _GenClass.ExecuteQuery("SP_DashboardCount", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            var res = _GenClassnew.ExecuteQuery("SP_DashboardCount", Parameter);
             DataRow row = res.Rows[0];
             Dashboard.TotalMembers = row["TotalMembers"].ToString();
             Dashboard.FestiveOffer = row["Offers"].ToString();
             Dashboard.MonthlySales = row["MonthlySale"].ToString();
             Dashboard.UpcomingBirthdays = row["Birthdays"].ToString();
+            return Dashboard;
+        }
 
-            Dashboard.GraphList = new List<Graph>();
-            var Res = _GenClass.ExecuteQuery("SP_Graph", Parameter);
+        public List<Graph> DashboardGraph()
+        {
+            List<Graph> List = new List<Graph>();
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            var Res = _GenClassnew.ExecuteQuery("SP_Graph", Parameter);
             foreach (DataRow Row in Res.Rows)
             {
                 Graph GH = new Graph();
                 int id = Row.Field<int>("Month");
-                GH.Month = Convert.ToString(id);
-                GH.Revenue = Row.Field<int>("Revenue");
-                Dashboard.GraphList.Add(GH);
+                GH.Month = Enum.GetName(typeof(EnumMonth), id);
+                GH.Revenue = Convert.ToInt32(Row.Field<decimal>("Revenue"));
+                List.Add(GH);
             }
-            return Dashboard;
+            return List;
         }
         #endregion
 
         #region Membership Details
         public List<MembershipDetails> GetMembershipDetails()
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("SP_GetMembership", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_GetMembership", Parameter);
             List<MembershipDetails> MemberList = new List<MembershipDetails>();
             foreach (DataRow row in dt.Rows)
             {
@@ -161,8 +168,8 @@ namespace Service
         #region BatchDetails
         public List<BatchDetails> GetBatchDetails()
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("SP_GetBatchDetails", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_GetBatchDetails", Parameter);
             List<BatchDetails> BatchDetails = new List<BatchDetails>();
             foreach (DataRow row in dt.Rows)
             {
@@ -178,9 +185,9 @@ namespace Service
         #endregion
         public bool IsUserAvailable(string Mobile)
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["Mobile"] = new SqlParameter("Mobile", Mobile);
-            var res = _GenClass.ExecuteQuery("", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["Mobile"] = new MySqlParameter("Mobile", Mobile);
+            var res = _GenClassnew.ExecuteQuery("", Parameter);
             DataRow row = res.Rows[0];
             if (row == null)
                 return true;
@@ -192,8 +199,8 @@ namespace Service
 
         public List<GraphicalReports> GetGraphDetails()
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            DataTable dt = _GenClassnew.ExecuteQuery("", Parameter);
             List<GraphicalReports> Graph = new List<GraphicalReports>();
             foreach (DataRow row in dt.Rows)
             {
@@ -209,10 +216,10 @@ namespace Service
         public Admin Login(UserModel UM)
         {
             Admin User = new Admin();
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["username"] = new SqlParameter("username", UM.UserName);
-            Parameter["password"] = new SqlParameter("password", UM.Password);
-            var res = _GenClass.ExecuteQuery("SP_AuthenticateUser", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["un"] = new MySqlParameter("un", UM.UserName);
+            Parameter["pw"] = new MySqlParameter("pw", UM.Password);
+            var res = _GenClassnew.ExecuteQuery("SP_AuthenticateUser", Parameter);
             if (res == null)
                 return User;
 
@@ -225,22 +232,11 @@ namespace Service
         }
         public List<CustomerRegistration> Receipts()
         {
-
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["Name"] = new SqlParameter("Name", "");
-            Parameter["Mobile"] = new SqlParameter("Mobile", "");
-            DataTable dt = _GenClass.ExecuteQuery("SP_CustomerDetails", Parameter);
-            List<Receipts> Receipts = new List<Receipts>();
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["Nam"] = new MySqlParameter("Nam", "");
+            Parameter["Mob"] = new MySqlParameter("Mob", "");
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_CustomerDetails", Parameter);
             List<CustomerRegistration> UserList = new List<CustomerRegistration>();
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //   Receipts TR = new Receipts();
-            //    TR.CustomerName = row.Field<string>("CustomerName");
-            //    TR.TotalReceipts = row.Field<string>("TotalReceipts");
-            //    TR.Date = row.Field<DateTime>("Date");
-            //    TR.TotalAmount = row.Field<string>("TotalAount");
-            //    Receipts.Add(TR);
-            //}
             foreach (DataRow row in dt.Rows)
             {
                 CustomerRegistration UM = new CustomerRegistration();
@@ -248,9 +244,41 @@ namespace Service
                 UM.Payment = row.Field<int>("Payment");
                 UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
                 UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
+                UM.Source = row.Field<string>("Source");
                 UserList.Add(UM);
             }
             return UserList;
+        }
+        public EmailModel GetEmailList()
+        {
+            EmailModel Model = new EmailModel();
+            Model.ReminderList = new List<ReminderEmail>();
+            Model.BdayList = new List<BdayEmail>();
+
+            //Get Reminder List
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_ReminderList", Parameter);
+            foreach (DataRow row in dt.Rows)
+            {
+                ReminderEmail reminder = new ReminderEmail();
+                reminder.Name = row.Field<string>("Name");
+                reminder.ExpiryDate = row.Field<DateTime>("ExpiryDate");
+                reminder.days = Convert.ToInt32(row.Field<Int64>("days"));
+                Model.ReminderList.Add(reminder);
+            }
+
+            //Get Birthday List
+            DataTable dt1 = _GenClassnew.ExecuteQuery("SP_Bdayreminder", Parameter);
+            foreach (DataRow row in dt1.Rows)
+            {
+                BdayEmail breminder = new BdayEmail();
+                breminder.Name = row.Field<string>("Name");
+                breminder.Mobile = row.Field<string>("Mobile");
+                breminder.Email = row.Field<string>("Email");
+                breminder.Age = Convert.ToInt32(row.Field<Int64>("Age"));
+                Model.BdayList.Add(breminder);
+            }
+            return Model;
         }
 
     }

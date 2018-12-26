@@ -1,4 +1,5 @@
 ﻿using CommonUtility;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,16 +12,17 @@ namespace Service
 {
     public class TrainerService
     {
-        private static GenericClass _GenClass = new GenericClass();
+        //private static GenericClass _GenClass = new GenericClass();
+        private static NewGenericClass _GenClassnew = new NewGenericClass();
 
         public string TrainerRegistration(TrainerModel Trainer)
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["TrainerName"] = new SqlParameter("TrainerName", Trainer.TrainerName);
-            Parameter["Gender"] = new SqlParameter("Gender", Trainer.Gender);
-            Parameter["Mobile"] = new SqlParameter("Mobile", Trainer.Mobile);
-            Parameter["Email"] = new SqlParameter("Email", Trainer.Email);
-            int id = _GenClass.ExecuteCommand("SP_AddTrainer", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["Tn"] = new MySqlParameter("Tn", Trainer.TrainerName);
+            Parameter["Gen"] = new MySqlParameter("Gen", Trainer.Gender);
+            Parameter["Mob"] = new MySqlParameter("Mob", Trainer.Mobile);
+            Parameter["Ema"] = new MySqlParameter("Ema", Trainer.Email);
+            int id = _GenClassnew.ExecuteCommand("SP_AddTrainer", Parameter);
             if (id > 0)
                 return Trainer.TrainerName + " Registered Successfully!!";
 
@@ -30,8 +32,8 @@ namespace Service
 
         public List<TrainerModel> GetAllTrainers()
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            DataTable dt = _GenClass.ExecuteQuery("SP_GetAllTrainers", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_GetAllTrainers", Parameter);
             List<TrainerModel> Trainers = new List<TrainerModel>();
             foreach (DataRow row in dt.Rows)
             {
@@ -49,10 +51,10 @@ namespace Service
 
         public bool CheckMobile(string mobile, string name)
         {
-            Dictionary<string, SqlParameter> Parameter = new Dictionary<string, SqlParameter>();
-            Parameter["mobile"] = new SqlParameter("mobile", mobile);
-            Parameter["name"] = new SqlParameter("name", name);
-            DataTable dt = _GenClass.ExecuteQuery("SP_CheckMobile", Parameter);
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["mob"] = new MySqlParameter("mob", mobile);
+            Parameter["nam"] = new MySqlParameter("nam", name);
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_CheckMobile", Parameter);
             return dt != null && dt.Rows.Count > 0 ? false : true;
         }
 

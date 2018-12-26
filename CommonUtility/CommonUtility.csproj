@@ -47,6 +47,8 @@
     <Compile Include="BatchDetails.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DashboardModel.cs" />
+    <Compile Include="EmailModel.cs" />
+    <Compile Include="EnumMonth.cs" />
     <Compile Include="GraphicalReports.cs" />
     <Compile Include="MembershipDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

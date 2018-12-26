@@ -1,0 +1,76 @@
+﻿@model CommonUtility.EmailModel
+@{
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6" style="height: 400px !important;overflow-y: scroll;">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="m-t-0"><span><i class="fa fa-bell" aria-hidden="true"></i></span> Reminder Emails</h2>
+                <span class="pull-right"><button class="btn btn-default">Send All</button></span>
+            </div>
+            <div class="comment-widgets">
+                @if (Model.ReminderList != null && Model.ReminderList.Count > 0)
+                {
+                    foreach (var item in Model.ReminderList)
+                    {
+                        <div class="d-flex no-block comment-row">
+                            <div class="comment-text w-100">
+                                <h5 class="font-medium">@item.Name</h5>
+                                <p class="m-b-10 text-muted">Dear @item.Name, your package is going to expire within @item.days day(s).Renew your package ontime to continue further.</p>
+                                <div class="comment-footer">
+                                    <span class="text-muted pull-right">Expiry Date: @item.ExpiryDate.ToString("dd/MM/yyyy")</span>
+                                    <span class="badge badge-pill badge-success">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="d-flex no-block comment-row">
+                        <div class="comment-text w-100">
+                            <p class="m-b-10 text-muted">Nothing to show</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6" style="height: 400px !important;overflow-y: scroll;">
+        <div class="card earning-widget">
+            <div class="card-body">
+                <div class="card-title">
+                    <div class="d-flex">
+                        <span>
+                            <h2 class="m-t-0"><span><i class="fa fa-birthday-cake" aria-hidden="true"></i></span> Birthday's</h2>
+                        </span>
+                        @*<select class="custom-select w-25 ml-auto">
+                            <option selected="">Today</option>
+                            <option value="1">Weekly</option>
+                        </select>*@
+                    </div>
+                </div>
+            </div>
+            <div class="card-body b-t">
+                <table class="table v-middle no-border">
+                    <tbody>
+                        @if (Model.BdayList != null && Model.BdayList.Count > 0)
+                        {
+                            foreach (var item in Model.BdayList)
+                            {
+                                <tr>
+                                    <td style="width:40px">@item.Name</td>
+                                    <td>Wish @item.Name on his @item.Age th BirthDay.</td>
+                                    <td align="right"><span class="label label-info">Send Email</span></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

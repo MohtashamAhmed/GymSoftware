@@ -21,6 +21,9 @@ namespace GymSoftware.Controllers
         [HttpPost]
         public ActionResult TrainerRegistration(TrainerModel Trainer)
         {
+            if (!ModelState.IsValid)
+                return View();
+
             ViewBag.Tmessage = _service.TrainerRegistration(Trainer);
             ModelState.Clear();
             return View();

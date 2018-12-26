@@ -70,7 +70,7 @@
                             <a href="@Url.Action("Receipts","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Total Receipts</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-cogs"></i><span class="hide-menu">Widgets</span></a>
+                            <a href="@Url.Action("Reminders","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Send Emails</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -91,6 +91,7 @@
             debugger;
             $('.sidebar-nav li').removeClass('active');
             $(this).addClass('active');
+            return true;
         });
     </script>
     @*<script src="~/Content/Scripts/jquery-3.2.1.min.js"></script>
