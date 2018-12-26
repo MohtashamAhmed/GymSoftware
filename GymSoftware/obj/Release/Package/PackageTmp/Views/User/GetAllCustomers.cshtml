@@ -1,0 +1,196 @@
+﻿@model CommonUtility.CustomerRegistration
+@{
+    ViewBag.Title = "GetAllCustomers";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Registered Customers</h4>
+        <h6 class="card-subtitle">Can also search or sort by any column</h6>
+        <table class="table" id="Cust_Rec">
+            <thead class="tableheadcolor">
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Membership</th>
+                    <th>Batch</th>
+                    <th>Payment</th>
+                    <th>Payment Date</th>
+                    <th>Expiry Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="tbodybgcolor">
+                @foreach (var item in Model.UsersList)
+                {
+                    string sts = DateTime.Now.Date > item.ExpiryDate.Date ? "Expired" : "Active";
+                    string stscls = DateTime.Now.Date > item.ExpiryDate.Date ? "label-danger" : "label-success";
+                    string cls = item.Outstanding > 0 ? "" : "disabled";
+                    <tr class="gradeX">
+                        <td>@item.Name</td>
+                        <td>@item.Mobile</td>
+                        <td>@item.MembershipName</td>
+                        <td>@item.BatchName</td>
+                        <td>@item.Payment</td>
+                        <td>@item.DateOfPayment.ToString("dd/MM/yyyy")</td>
+                        <td>@item.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                        <td><span class="label @stscls">@sts</span></td>
+                        <td>
+                            @if (sts == "Expired")
+                            {
+                                @*<button class="renuepopup btn btn-inverse" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
+                                        data-totpayment="@item.TotalPayment" data-payment="@item.Payment" data-outs="@item.Outstanding">
+                                    Renue
+                                </button>*@
+                                <button type="button" class="btn btn-default"><i class="fa fa-usd"></i> Renew</button>
+                            }
+                            else
+                            {
+                                <button class="Editpopup btn btn-default @cls" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
+                                        data-totpayment="@item.TotalPayment" data-payment="@item.Payment" data-outs="@item.Outstanding">
+                                    Edit
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div><a href="@Url.Action("ExportToExcel","User")"><button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Export to Excel</button></a></div>
+
+
+        <div id="Edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Update Payment Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Name:</label>
+                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter Name" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Mobile:</label>
+                                        @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Email:</label>
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Total Amount:</label>
+                                        @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Amount" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Payment:</label>
+                                        @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Outstanding:</label>
+                                        @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding" })
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <button type="button" id="cleardue" class="btn btn-default">Clear Dues</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Renue-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Update Payment Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Content/Script/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Cust_Rec').DataTable({
+            "bLengthChange": false,
+            "pagingType": "full_numbers",
+            "order": [],
+        });
+    });
+    $('.Editpopup').click(function () {
+        var name = $(this).attr('data-name');
+        var email = $(this).attr('data-email');
+        var mobile = $(this).attr('data-mobile');
+        var payment = $(this).attr('data-payment');
+        var outstanding = $(this).attr('data-outs');
+        var totalpayment = parseInt(payment) + parseInt(outstanding);
+
+        $('#Name').val(name);
+        $('#Mobile').val(mobile);
+        $('#Email').val(email);
+        $('#TotalPayment').val(totalpayment);
+        $('#Payment').val(payment);
+        $('#Outstanding').val(outstanding);
+
+        var ost = parseInt(outstanding);
+        if (ost > 0) {
+            $('#Edit-modal-modal').modal('show');
+        }
+    });
+
+    $('.renuepopup').click(function () {
+        debugger;
+        //var name = $(this).attr('data-name');
+        //var email = $(this).attr('data-email');
+        //var mobile = $(this).attr('data-mobile');
+        //var payment = $(this).attr('data-payment');
+        //var outstanding = $(this).attr('data-outs');
+        //var totalpayment = parseInt(payment) + parseInt(outstanding);
+
+        //$('#Name').val(name);
+        //$('#Mobile').val(mobile);
+        //$('#Email').val(email);
+        //$('#TotalPayment').val(totalpayment);
+        //$('#Payment').val(payment);
+        //$('#Outstanding').val(outstanding);
+
+        //var ost = parseInt(outstanding);
+        //if (ost > 0) {
+        //    $('#Renue-modal-modal').modal('show');
+        //}
+        $('#Renue-modal-modal').modal('show');
+    });
+
+    
+    $("#cleardue").click(function () {
+        var payment = $('#Payment').val();
+        var outstanding = $('#Outstanding').val();
+        var finalamt = parseInt(payment) + parseInt(outstanding);
+        $('#Payment').val(finalamt);
+        $('#Outstanding').val(0);
+    })
+</script>

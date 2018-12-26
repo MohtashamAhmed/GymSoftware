@@ -1,0 +1,12 @@
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\Service.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\Service.pdb
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\CommonUtility.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\MySql.Data.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\System.Web.Mvc.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\Google.Protobuf.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\CommonUtility.pdb
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\MySql.Data.xml
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Release\System.Web.Mvc.xml
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Release\Service.csprojResolveAssemblyReference.cache
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Release\Service.dll
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Release\Service.pdb

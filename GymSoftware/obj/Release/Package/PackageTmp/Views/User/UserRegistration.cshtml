@@ -1,0 +1,141 @@
+﻿@model CommonUtility.CustomerRegistration
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+<div class="card">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-body">
+                <h4 class="card-title">Create Customer</h4>
+                <h6 class="card-subtitle">User Registration</h6>
+                @using (Html.BeginForm("UserRegistration", "User", FormMethod.Post@*, new { @class = "form-material m-t-40" }*@))
+                {
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-line", @placeholder = "Enter Name" })
+                                @Html.ValidationMessageFor(x => x.Name, null, new { style = "color: red" })
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label><br />
+                                <label>
+                                    @Html.RadioButtonFor(x => x.Gender, "Male", new { id = "gender", @checked = "checked" }) Male
+                                </label>
+                                <label>
+                                    @Html.RadioButtonFor(x => x.Gender, "FeMale", new { id = "gender" }) Female
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                @Html.TextBoxFor(x => x.DateofBirth, new { @class = "form-control", @placeholder = "MM/DD/YYYY" })
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
+                                @Html.ValidationMessageFor(x => x.Email, null, new { style = "color: red" })
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control", @placeholder = "Enter Mobile" })
+                                @Html.ValidationMessageFor(x => x.Mobile, null, new { style = "color: red" })
+                            </div>
+                            <div class="form-group">
+                                <label>Memebership</label>
+                                @Html.DropDownListFor(model => model.MembershipID, ViewBag.Membership as SelectList, "-- Select --", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.MembershipID, null, new { style = "color: red" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label>Batch Tymings</label>
+                                @Html.DropDownListFor(model => model.BatchID, ViewBag.Batchdetails as SelectList, "-- Select --", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.BatchID, null, new { style = "color: red" })
+                            </div>
+                            <div class="form-group">
+                                <label>Total Payment</label>
+                                @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Payment", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Payment</label>
+                                @Html.TextBoxFor(x => x.Payment, new { @class = "form-control", @placeholder = "Enter Payment" })
+                                @Html.ValidationMessageFor(x => x.Payment, null, new { style = "color: red" })
+                            </div>
+                            <div class="form-group">
+                                <label>Outstanding Amount</label>
+                                @Html.TextBoxFor(x => x.Outstanding, new { @class = "form-control", @placeholder = "Enter Outstanding", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group">
+                                <label>Weight</label>
+                                @Html.TextBoxFor(x => x.Weight, new { @class = "form-control", @placeholder = "Enter weight" })
+                            </div>
+                            <div class="form-group">
+                                <label>Source</label>
+                                @Html.TextBoxFor(x => x.Source, new { @class = "form-control", @placeholder = "Enter Source" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <center>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                                <button type="button" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                            </center>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#DateofBirth").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1948:2010"
+        });
+
+        $("#MembershipID").change(function () {
+            var mid = $(this).val();
+            if (mid != '') {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("BindPrice", "User")',
+                    data: { memid: mid },
+                    dataType: "json",
+                    success: function (data) {
+                        $('#TotalPayment').val(data.price);
+                        $('#Outstanding').val(data.price);
+                    },
+                    error: function () {
+                    }
+                });
+            }
+            else {
+                $('#TotalPayment').val('');
+                $('#Outstanding').val('');
+            }
+
+        });
+
+        $('#Payment').change(function () {
+            var paymnt = $(this).val();
+            var totalpaymnt = $('#TotalPayment').val();
+            var amt = "";
+            if (paymnt != '') {
+                amt = parseInt(totalpaymnt) - parseInt(paymnt);
+                $('#Outstanding').val(amt);
+            }
+            else {
+                $('#Outstanding').val(totalpaymnt);
+            }
+        });
+
+
+    });
+</script>

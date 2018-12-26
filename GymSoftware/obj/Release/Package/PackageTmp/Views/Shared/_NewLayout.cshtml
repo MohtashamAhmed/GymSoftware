@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @*<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">*@
+    <title>Gym Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+</head>
+
+<body class="horizontal-nav skin-megna fixed-layout">
+
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("DashboardDetails", "User")">
+                        <b>Gym Management</b>
+                    </a>
+                </div>
+
+                <div class="navbar-collapse">
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-sm-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+
+                        <li class="nav-item">
+                            <form class="app-search d-none d-md-block d-lg-block">
+                                <input type="text" class="form-control" placeholder="Search & enter">
+                            </form>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Content/Images/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="fa fa-user"></i> My Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="@Url.Action("LogOff","Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li>
+                            <a href="@Url.Action("DashboardDetails","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("UserRegistration","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-user-plus"></i><span class="hide-menu">Create Customer</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrainerRegistration","Trainer")" class="has-arrow waves-effect waves-dark two-column" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Create Trainer</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllCustomers","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-bars"></i><span class="hide-menu">View Customers</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetAllTrainer","Trainer")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-server"></i><span class="hide-menu">View Trainers</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Receipts","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Total Receipts</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Reminders","User")" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Send Emails</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>        
+        <div class="page-wrapper">
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+        <footer class="footer"><center>© 2018 www.GymSoftware.com. All rights reserved.</center></footer>
+
+    </div>
+    <script>
+        $('.sidebar-nav').on('click', 'li', function () {
+            debugger;
+            $('.sidebar-nav li').removeClass('active');
+            $(this).addClass('active');
+            return true;
+        });
+    </script>
+    @*<script src="~/Content/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Content/Scripts/popper.min.js"></script>
+        <script src="~/Content/Scripts/bootstrap.min.js"></script>
+        <script src="~/Content/Scripts/jquery.sparkline.min.js"></script>
+        <script src="~/Content/Scripts/perfect-scrollbar.jquery.min.js"></script>
+        <script src="~/Content/Scripts/sidebarmenu.js"></script>
+        <script src="~/Content/Scripts/sticky-kit.min.js"></script>
+        <script src="~/Content/Scripts/waves.js"></script>*@
+</body>
+</html>

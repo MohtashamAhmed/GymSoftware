@@ -1,0 +1,45 @@
+﻿@model List<CommonUtility.TrainerModel>
+@{
+    ViewBag.Title = "Search Trainer";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Trainer Information</h4>
+        <h6 class="card-subtitle">Can also search or sort by any column</h6>
+        <table class="table" id="Cust_Rec">
+            <thead class="tableheadcolor">
+                <tr>
+                    <th>Trainer Name</th>
+                    <th>Gender</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>JoinDate</th>
+                </tr>
+            </thead>
+            <tbody class="tbodybgcolor">
+                @foreach (var item in Model)
+                {
+                    <tr class="gradeX">
+                        <td>@item.TrainerName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Mobile</td>
+                        <td>@item.Email</td>
+                        <td>@item.JoinDate.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Cust_Rec').DataTable({
+            "bLengthChange": false,
+            "pagingType": "full_numbers",
+            "order": [],
+        });
+    });
+</script>
+
