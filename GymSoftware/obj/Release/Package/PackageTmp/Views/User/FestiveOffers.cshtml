@@ -74,43 +74,44 @@
     <div class="card-body">
         <h4 class="card-title">Membership</h4>
         <h6 class="card-subtitle">List of all membership offers.</h6>
-        <table class="table" id="Cust_Rec">
-            <thead class="tableheadcolor">
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Date</th>
-                    <th>Festive Offer</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody class="tbodybgcolor">
-                @foreach (var item in Model.Offerlist)
-                {
-                    string stscls = item.isoffer == true ? "label-success" : "label-danger";
-                    string offer = item.isoffer == true ? "Yes" : "No";
-                    string status = item.IsActive == true ? "Acitve" : "Inactive";
-                    <tr class="gradeX">
-                        <td>@item.Name</td>
-                        <td>@item.Price</td>
-                        <td>@item.Date.ToShortDateString()</td>
-                        <td><span class="label @stscls">@offer</span></td>
-                        <td>
-                            @if (item.IsActive)
-                            {
-                                <input type="checkbox" class="checkedclass" checked data-toggle="toggle" data-onstyle="info" data-on="Active" data-off="InActive">
-                            }
-                            else
-                            {
-                                <input type="checkbox" class="checkedclass" data-toggle="toggle" data-onstyle="info" data-on="Active" data-off="InActive">
-                            }
-
-                        </td>
+        <div class="table-responsive">
+            <table class="table" id="Cust_Rec">
+                <thead class="tableheadcolor">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>Festive Offer</th>
+                        <th>Action</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="tbodybgcolor">
+                    @foreach (var item in Model.Offerlist)
+                    {
+                        string stscls = item.isoffer == true ? "label-success" : "label-danger";
+                        string offer = item.isoffer == true ? "Yes" : "No";
+                        string status = item.IsActive == true ? "Acitve" : "Inactive";
+                        <tr class="gradeX">
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Date.ToShortDateString()</td>
+                            <td><span class="label @stscls">@offer</span></td>
+                            <td>
+                                @if (item.IsActive)
+                                {
+                                    <input type="checkbox" class="checkedclass" checked data-toggle="toggle" data-onstyle="info" data-on="Active" data-off="InActive">
+                                }
+                                else
+                                {
+                                    <input type="checkbox" class="checkedclass" data-toggle="toggle" data-onstyle="info" data-on="Active" data-off="InActive">
+                                }
 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>

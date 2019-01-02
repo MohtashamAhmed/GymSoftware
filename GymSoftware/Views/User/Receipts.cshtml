@@ -7,37 +7,38 @@
     <div class="card-body">
         <h4 class="card-title">Receipts</h4>
         <h6 class="card-subtitle">Can also search or sort by any column</h6>
-        <table class="table" id="Cust_Rec">
-            <thead class="tableheadcolor">
-                <tr>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Source</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody class="tbodybgcolor">
-                @foreach (var item in Model)
-            {
-                    <tr class="gradeX">
-                        <td>@item.Name</td>
-                        <td>@item.Gender</td>
-                        <td>@item.Mobile</td>
-                        <td>@item.Email</td>
-                        <td>@item.Source</td>
-                        <td>
-                            <button type="button" class="Editpopup btn btn-default" data-custid="@item.CustomerID">
-                                 View History
-                            </button>
-                        </td>
+        <div class="table-responsive">
+            <table class="table" id="Cust_Rec">
+                <thead class="tableheadcolor">
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Source</th>
+                        <th>Action</th>
                     </tr>
+                </thead>
+                <tbody class="tbodybgcolor">
+                    @foreach (var item in Model)
+            {
+                        <tr class="gradeX">
+                            <td>@item.Name</td>
+                            <td>@item.Gender</td>
+                            <td>@item.Mobile</td>
+                            <td>@item.Email</td>
+                            <td>@item.Source</td>
+                            <td>
+                                <button type="button" class="Editpopup btn btn-default" data-custid="@item.CustomerID">
+                                    View History
+                                </button>
+                            </td>
+                        </tr>
                 }
-            </tbody>
+                </tbody>
 
-        </table>
-
+            </table>
+        </div>
         <div id="Edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
