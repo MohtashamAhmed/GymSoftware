@@ -18,7 +18,7 @@ namespace Service
             return cn;
         }
 
-        public int ExecuteCommand(string Name, Dictionary<string, MySqlParameter> procParameters)
+        public int ExecuteCommand(string Name, Dictionary<string, MySqlParameter> procParameters, bool op = false)
         {
             var sqlCon = GetConnection("");
             MySqlCommand cmd = new MySqlCommand(Name, sqlCon);
@@ -30,8 +30,20 @@ namespace Service
                     cmd.Parameters.AddWithValue(procParameter.Key, procParameter.Value.Value);
                 }
             }
-            object obj = cmd.ExecuteScalar();
-            return Convert.ToInt32(obj);
+            int ID = 0;
+            if (op)
+            {
+                cmd.Parameters.Add("LID", SqlDbType.Int);
+                cmd.Parameters["LID"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                ID = (int)cmd.Parameters["LID"].Value;
+                //object obj = cmd.ExecuteScalar();
+            }
+            else
+            {
+                cmd.ExecuteNonQuery();
+            }
+            return ID;
         }
 
         public DataTable ExecuteQuery(string Name, Dictionary<string, MySqlParameter> procParameters)

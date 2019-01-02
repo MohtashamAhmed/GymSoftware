@@ -22,7 +22,7 @@ namespace Service
             Parameter["Gen"] = new MySqlParameter("Gen", Trainer.Gender);
             Parameter["Mob"] = new MySqlParameter("Mob", Trainer.Mobile);
             Parameter["Ema"] = new MySqlParameter("Ema", Trainer.Email);
-            int id = _GenClassnew.ExecuteCommand("SP_AddTrainer", Parameter);
+            int id = _GenClassnew.ExecuteCommand("SP_AddTrainer", Parameter,true);
             if (id > 0)
                 return Trainer.TrainerName + " Registered Successfully!!";
 

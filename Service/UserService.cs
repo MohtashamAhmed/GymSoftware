@@ -25,21 +25,24 @@ namespace Service
         #region Customer Registration
         public string CustomerRegistration(CustomerRegistration Registration)
         {
-            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
-            Parameter["Nam"] = new MySqlParameter("Nam", Registration.Name);
-            Parameter["Gen"] = new MySqlParameter("Gen", Registration.Gender);
-            Parameter["BirthD"] = new MySqlParameter("BirthD", Registration.DateofBirth);
-            Parameter["Mob"] = new MySqlParameter("Mob", Registration.Mobile);
-            Parameter["Ema"] = new MySqlParameter("Ema", Registration.Email);
-            Parameter["Weigh"] = new MySqlParameter("Weigh", Registration.Weight);
-            Parameter["scr"] = new MySqlParameter("scr", Registration.Source);
-            Parameter["JoinD"] = new MySqlParameter("JoinD", DateTime.Now);
-            int CustomerID = _GenClassnew.ExecuteCommand("SP_AddCustomer", Parameter);
-            if (CustomerID > 0)
+            if (Registration.CustomerID == null && Registration.CustomerID == 0)
+            {
+                Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+                Parameter["Nam"] = new MySqlParameter("Nam", Registration.Name);
+                Parameter["Gen"] = new MySqlParameter("Gen", Registration.Gender);
+                Parameter["BirthD"] = new MySqlParameter("BirthD", Registration.DateofBirth);
+                Parameter["Mob"] = new MySqlParameter("Mob", Registration.Mobile);
+                Parameter["Ema"] = new MySqlParameter("Ema", Registration.Email);
+                Parameter["Weigh"] = new MySqlParameter("Weigh", Registration.Weight);
+                Parameter["scr"] = new MySqlParameter("scr", Registration.Source);
+                Parameter["JoinD"] = new MySqlParameter("JoinD", DateTime.Now);
+                Registration.CustomerID = _GenClassnew.ExecuteCommand("SP_AddCustomer", Parameter, true);
+            }
+            if (Registration.CustomerID > 0)
             {
                 Dictionary<string, MySqlParameter> Details = new Dictionary<string, MySqlParameter>();
                 int Tid = Registration.TrainerID != null ? Registration.TrainerID : 0;
-                Details["CustID"] = new MySqlParameter("CustID", CustomerID);
+                Details["CustID"] = new MySqlParameter("CustID", Registration.CustomerID);
                 Details["MemID"] = new MySqlParameter("MemID", Registration.MembershipID);
                 Details["BID"] = new MySqlParameter("BID", Registration.BatchID);
                 Details["TotalP"] = new MySqlParameter("TotalP", Registration.TotalPayment);
@@ -49,12 +52,17 @@ namespace Service
                 Details["ExDate"] = new MySqlParameter("ExDate", GetMembershipExpDate(DateTime.Now, Registration.MembershipID));
                 Details["TID"] = new MySqlParameter("TID", Tid);
                 //Details["ExistingUser"] = new MySqlParameter("ExistingUser", false);
-                int TrainerID = _GenClassnew.ExecuteCommand("SP_AddPayment", Details);
+                int TrainerID = _GenClassnew.ExecuteCommand("SP_AddPayment", Details, true);
+
+                if (Registration.renew)
+                    return Registration.Name + " Account renewed successfully!!";
+
                 if (TrainerID > 0)
                     return Registration.Name + " Registered Successfully!!";
             }
+
             Dictionary<string, MySqlParameter> DeleteParam = new Dictionary<string, MySqlParameter>();
-            DeleteParam["custid"] = new MySqlParameter("custid", CustomerID);
+            DeleteParam["custid"] = new MySqlParameter("custid", Registration.CustomerID);
             _GenClassnew.ExecuteCommand("SP_DeleteUser", DeleteParam);
             return "Registration Failed";
         }
@@ -99,6 +107,7 @@ namespace Service
             foreach (DataRow row in dt.Rows)
             {
                 DisplayCustomers UM = new DisplayCustomers();
+                UM.CustomerID = row.Field<int>("CustomerID");
                 UM.Name = row.Field<string>("Name");
                 UM.Mobile = row.Field<string>("Mobile");
                 UM.Email = row.Field<string>("Email");
@@ -125,6 +134,7 @@ namespace Service
             Dashboard.TotalMembers = row["TotalMembers"].ToString();
             Dashboard.FestiveOffer = row["Offers"].ToString();
             Dashboard.MonthlySales = row["MonthlySale"].ToString();
+            Dashboard.MonthlySales =(Dashboard.MonthlySales == null || Dashboard.MonthlySales == "") ? "0" : Dashboard.MonthlySales;
             Dashboard.UpcomingBirthdays = row["Birthdays"].ToString();
             return Dashboard;
         }
@@ -158,6 +168,9 @@ namespace Service
                 MD.ID = row.Field<int>("ID");
                 MD.Name = row.Field<string>("Name");
                 MD.Price = row.Field<int>("Price");
+                MD.IsActive = Convert.ToBoolean(row.Field<SByte>("IsActive"));
+                MD.isoffer = Convert.ToBoolean(row.Field<SByte>("Offer"));
+                MD.Date = row.Field<DateTime>("Date");
                 MemberList.Add(MD);
             }
 
@@ -240,7 +253,11 @@ namespace Service
             foreach (DataRow row in dt.Rows)
             {
                 CustomerRegistration UM = new CustomerRegistration();
+                UM.CustomerID = row.Field<int>("CustomerID");
                 UM.Name = row.Field<string>("Name");
+                UM.Gender = row.Field<string>("Gender");
+                UM.Mobile = row.Field<string>("Mobile");
+                UM.Email = row.Field<string>("Email");
                 UM.Payment = row.Field<int>("Payment");
                 UM.DateOfPayment = row.Field<DateTime>("DateOfPayment");
                 UM.ExpiryDate = row.Field<DateTime>("ExpiryDate");
@@ -279,6 +296,45 @@ namespace Service
                 Model.BdayList.Add(breminder);
             }
             return Model;
+        }
+
+        public string AddOffer(MembershipDetails Offer)
+        {
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["nam"] = new MySqlParameter("nam", Offer.Name);
+            Parameter["pri"] = new MySqlParameter("pri", Offer.Price);
+            Parameter["isact"] = new MySqlParameter("isact", true);
+            Parameter["off"] = new MySqlParameter("off", Offer.isoffer);
+            Parameter["dat"] = new MySqlParameter("dat", DateTime.Now);
+            int ID = _GenClassnew.ExecuteCommand("SP_Addfestiveoffer", Parameter, true);
+            return (ID > 0 && ID != null) ? "Added Succesfully!!" : "something went wrong";
+        }
+
+        public string UpdateOffer(int ID, bool active)
+        {
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["memid"] = new MySqlParameter("memid", ID);
+            Parameter["isact"] = new MySqlParameter("isact", active);
+            _GenClassnew.ExecuteCommand("SP_UpdateOffer", Parameter);
+            return "Updated Succesfully!!";
+        }
+
+        public List<DisplayCustomers> GetCustomerHistory(int custID)
+        {
+            List<DisplayCustomers> CustList = new List<DisplayCustomers>();            
+            Dictionary<string, MySqlParameter> Parameter = new Dictionary<string, MySqlParameter>();
+            Parameter["CustID"] = new MySqlParameter("CustID", custID);
+            DataTable dt = _GenClassnew.ExecuteQuery("SP_CustomerHistory", Parameter);
+            foreach (DataRow row in dt.Rows)
+            {
+                DisplayCustomers history = new DisplayCustomers();
+                history.Name = row.Field<string>("Name");
+                history.MembershipName = row.Field<string>("Memmership");
+                history.BatchName = row.Field<string>("BatchName");
+                history.date = row.Field<DateTime>("DateOfPayment").ToString("dd/MM/yyyy");
+                CustList.Add(history);
+            }
+            return CustList;
         }
 
     }

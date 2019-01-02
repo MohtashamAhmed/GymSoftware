@@ -92,3 +92,4 @@ C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\Microsoft.Owin.S
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\bin\MySql.Data.xml
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Release\GymSoftware.dll
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Release\GymSoftware.pdb
+C:\Users\Mohtasham\Documents\GitHub\GymSoftware\GymSoftware\obj\Release\GymSoftware.csprojResolveAssemblyReference.cache

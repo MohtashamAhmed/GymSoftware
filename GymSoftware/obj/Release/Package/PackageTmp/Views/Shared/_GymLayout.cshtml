@@ -10,7 +10,7 @@
     @*<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">*@
     <title>Gym Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">   
     <link href="~/Content/style.min.css" rel="stylesheet" />
 
 </head>
@@ -24,8 +24,8 @@
                 </div>
                 <div class="navbar-collapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-sm-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                        <li class="nav-item" style="margin-left: 50px;"> <a class="nav-link nav-toggler d-block d-sm-none waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
                         <li class="nav-item">
                             <form class="app-search d-none d-md-block d-lg-block">
                                 <input type="text" class="form-control" placeholder="Search & enter">
@@ -58,7 +58,7 @@
                         <li> <a href="@Url.Action("GetAllTrainer","Trainer")" aria-expanded="false"><i class="fa fa-server"></i><span class="hide-menu">View Trainers</span></a></li>
                         <li> <a href="@Url.Action("Receipts","User")" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Total Receipts</span></a></li>
                         <li> <a href="@Url.Action("Reminders","User")" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Send Emails</span></a></li>
-                        <li> <a href="#" aria-expanded="false"><i class="fa fa-gift"></i><span class="hide-menu">Festive Offers</span></a></li>
+                        <li> <a href="@Url.Action("FestiveOffers","User")" aria-expanded="false"><i class="fa fa-gift"></i><span class="hide-menu">Festive Offers</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -89,7 +89,7 @@
             </div>
         </div>
         <footer class="footer">
-            © 2018 Eliteadmin by themedesigner.in
+            <center>© 2019 www.Rmtech.info. All rights reserved.</center>
         </footer>
     </div>
 </body>

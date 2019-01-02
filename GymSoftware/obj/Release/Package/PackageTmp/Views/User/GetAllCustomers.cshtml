@@ -26,7 +26,7 @@
                 {
                     string sts = DateTime.Now.Date > item.ExpiryDate.Date ? "Expired" : "Active";
                     string stscls = DateTime.Now.Date > item.ExpiryDate.Date ? "label-danger" : "label-success";
-                    string cls = item.Outstanding > 0 ? "" : "disabled";
+                    string cls = item.Outstanding > 0 ? "Editpopup" : "disabled";
                     <tr class="gradeX">
                         <td>@item.Name</td>
                         <td>@item.Mobile</td>
@@ -39,17 +39,16 @@
                         <td>
                             @if (sts == "Expired")
                             {
-                                @*<button class="renuepopup btn btn-inverse" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
+                                <button type="button" class="Editpopup btn btn-default" data-custid="@item.CustomerID" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
                                         data-totpayment="@item.TotalPayment" data-payment="@item.Payment" data-outs="@item.Outstanding">
-                                    Renue
-                                </button>*@
-                                <button type="button" class="btn btn-default"><i class="fa fa-usd"></i> Renew</button>
+                                    <i class="fa fa-usd"></i> Renew
+                                </button>
                             }
                             else
                             {
-                                <button class="Editpopup btn btn-default @cls" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
+                                <button class="btn btn-default @cls" data-custid="@item.CustomerID" data-name="@item.Name" data-email="@item.Email" data-mobile="@item.Mobile"
                                         data-totpayment="@item.TotalPayment" data-payment="@item.Payment" data-outs="@item.Outstanding">
-                                    Edit
+                                    <i class="fa fa-pencil-square-o"></i> Edit
                                 </button>
                             }
                         </td>
@@ -64,7 +63,15 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Update Payment Details</h4>
+                        @if (Model.Outstanding > 0)
+                        {
+                            <h4 class="modal-title">Update Payment Details</h4>
+                        }
+                        else
+                        {
+                            <h4 class="modal-title">Renew Account</h4>
+                        }
+
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
@@ -83,9 +90,17 @@
                                         <label class="control-label">Email:</label>
                                         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Enter Email" })
                                     </div>
+                                    <div class="form-group">
+                                        <label>Memebership</label>
+                                        @Html.DropDownListFor(model => model.MembershipID, ViewBag.Membership as SelectList, "-- Select --", new { @class = "form-control" })
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Batch Tymings</label>
+                                        @Html.DropDownListFor(model => model.BatchID, ViewBag.Batchdetails as SelectList, "-- Select --", new { @class = "form-control" })
+                                    </div>
                                     <div class="form-group">
                                         <label class="control-label">Total Amount:</label>
                                         @Html.TextBoxFor(x => x.TotalPayment, new { @class = "form-control", @placeholder = "Enter Total Amount" })
@@ -101,7 +116,12 @@
                                 </div>
                             </div>
                         </form>
-                        <button type="button" id="cleardue" class="btn btn-default">Clear Dues</button>
+
+                        @if (Model.Outstanding > 0)
+                        {
+                            <button type="button" id="cleardue" class="btn btn-default">Clear Dues</button>
+                        }
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
@@ -110,29 +130,11 @@
                 </div>
             </div>
         </div>
-
-        <div id="Renue-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Update Payment Details</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
 <script src="~/Content/Script/jquery.dataTables.min.js"></script>
+<script src="~/Content/Script/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#Cust_Rec').DataTable({
@@ -142,55 +144,70 @@
         });
     });
     $('.Editpopup').click(function () {
+        debugger;
+        var custid = parseInt($(this).attr('data-custid'));
         var name = $(this).attr('data-name');
         var email = $(this).attr('data-email');
         var mobile = $(this).attr('data-mobile');
         var payment = $(this).attr('data-payment');
-        var outstanding = $(this).attr('data-outs');
+        var outstanding = parseInt($(this).attr('data-outs'));
         var totalpayment = parseInt(payment) + parseInt(outstanding);
 
+        $('#CustomerID').val(custid);
         $('#Name').val(name);
         $('#Mobile').val(mobile);
         $('#Email').val(email);
-        $('#TotalPayment').val(totalpayment);
-        $('#Payment').val(payment);
-        $('#Outstanding').val(outstanding);
-
-        var ost = parseInt(outstanding);
-        if (ost > 0) {
-            $('#Edit-modal-modal').modal('show');
+        if (outstanding > 0) {
+            $('#TotalPayment').val(totalpayment);
+            $('#Payment').val(payment);
+            $('#Outstanding').val(outstanding);
         }
+        var ost = parseInt(outstanding);
+        $('#Edit-modal').modal('show');
     });
 
-    $('.renuepopup').click(function () {
-        debugger;
-        //var name = $(this).attr('data-name');
-        //var email = $(this).attr('data-email');
-        //var mobile = $(this).attr('data-mobile');
-        //var payment = $(this).attr('data-payment');
-        //var outstanding = $(this).attr('data-outs');
-        //var totalpayment = parseInt(payment) + parseInt(outstanding);
-
-        //$('#Name').val(name);
-        //$('#Mobile').val(mobile);
-        //$('#Email').val(email);
-        //$('#TotalPayment').val(totalpayment);
-        //$('#Payment').val(payment);
-        //$('#Outstanding').val(outstanding);
-
-        //var ost = parseInt(outstanding);
-        //if (ost > 0) {
-        //    $('#Renue-modal-modal').modal('show');
-        //}
-        $('#Renue-modal-modal').modal('show');
-    });
-
-    
     $("#cleardue").click(function () {
         var payment = $('#Payment').val();
         var outstanding = $('#Outstanding').val();
         var finalamt = parseInt(payment) + parseInt(outstanding);
         $('#Payment').val(finalamt);
         $('#Outstanding').val(0);
-    })
+    });
+
+    $("#MembershipID").change(function () {
+        var mid = $(this).val();
+        if (mid != '') {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("BindPrice", "User")',
+                data: { memid: mid },
+                dataType: "json",
+                success: function (data) {
+                    $('#TotalPayment').val(data.price);
+                    $('#Outstanding').val(data.price);
+                },
+                error: function () {
+                }
+            });
+        }
+        else {
+            $('#TotalPayment').val('');
+            $('#Outstanding').val('');
+        }
+
+    });
+
+    $('#Payment').change(function () {
+        var paymnt = $(this).val();
+        var totalpaymnt = $('#TotalPayment').val();
+        var amt = "";
+        if (paymnt != '') {
+            amt = parseInt(totalpaymnt) - parseInt(paymnt);
+            $('#Outstanding').val(amt);
+        }
+        else {
+            $('#Outstanding').val(totalpaymnt);
+        }
+    });
+
 </script>

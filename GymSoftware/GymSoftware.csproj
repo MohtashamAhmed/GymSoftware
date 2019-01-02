@@ -248,8 +248,10 @@
     <Content Include="Content\Script\popper.min.js" />
     <Content Include="Content\Script\sidebarmenu.js" />
     <Content Include="Content\Script\sticky-kit.min.js" />
+    <Content Include="Content\Script\switchery.min.js" />
     <Content Include="Content\Script\waves.js" />
     <Content Include="Content\style.min.css" />
+    <Content Include="Content\switchery.min.css" />
     <Content Include="Content\themify-icons-frontend.min.css" />
     <Content Include="Content\themify-icons.min.css" />
     <Content Include="Error.html" />
@@ -328,6 +330,7 @@
     <Content Include="Views\Home\TrainerRegistration.cshtml" />
     <Content Include="Views\Home\GetAllCustomers.cshtml" />
     <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\User\FestiveOffers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

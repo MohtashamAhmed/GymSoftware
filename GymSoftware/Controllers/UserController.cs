@@ -83,10 +83,12 @@ namespace GymSoftware.Controllers
 
         #endregion
 
-        public ActionResult GetAllCustomers()
+        public ActionResult GetAllCustomers(string msg = "")
         {
             CustomerRegistration Model = new CustomerRegistration();
             Model.UsersList = _service.GetAllUser("", "");
+            BindDropDowns();
+            ViewBag.renewmsg = msg;
             return View(Model);
         }
 
@@ -120,6 +122,12 @@ namespace GymSoftware.Controllers
             return View(_service.Receipts());
         }
 
+        public JsonResult GetCustHistory(int custID)
+        {
+            var res = _service.GetCustomerHistory(custID);
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Reminders()
         {
             return View(_service.GetEmailList());
@@ -128,6 +136,36 @@ namespace GymSoftware.Controllers
         public ActionResult MyProfile()
         {
             return View();
+        }
+
+        public ActionResult FestiveOffers()
+        {
+            DisplayOffers Offer = new DisplayOffers();
+            Offer.Offerlist = _service.GetMembershipDetails();
+            return View(Offer);
+        }
+        [HttpPost]
+        public ActionResult FestiveOffers(MembershipDetails Add)
+        {
+            if (!ModelState.IsValid)
+                return View(Add);
+
+            ViewBag.Message = _service.AddOffer(Add);
+            ModelState.Clear();
+            return View(Add);
+        }
+
+        public JsonResult UpdateOffer(int ID,bool isactive)
+        {
+            var res = _service.UpdateOffer(ID,isactive);
+            return Json(res, JsonRequestBehavior.AllowGet); 
+        }
+
+        [HttpPost]
+        public JsonResult RenewAccount(CustomerRegistration model)
+        {
+            string res = _service.CustomerRegistration(model);
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
     }
