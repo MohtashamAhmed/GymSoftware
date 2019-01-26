@@ -1,31 +1,311 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @{
+        Layout = null;
+    }
+    <title>RM Tech</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800" rel="stylesheet" media="screen">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <link href="~/Website/CssStylesheet/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Website/CssStylesheet/style.css" rel="stylesheet" />
+    <link href="~/Website/CssStylesheet/default.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle nav</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Logo text or image -->
+                <a class="navbar-brand" href="index.html">RM Tech</a>
+            </div>
+            <div class="navigation collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="current"><a href="#intro">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Service</a></li>
+                    <li><a href="#portfolio">Domains</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- intro area -->
+    <section id="intro">
+        <div class="intro-container">
+            <div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+                    <!-- Slide 2 -->
+                    <div class="item active">
+                        
+                        <div class="carousel-background"><img src="~/Website/WebImages/Image1.jpg" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2 class="animated fadeInDown">RM Tech</span></h2>
+                                <h2 class="animated fadeInDown">Leading Solutions</span></h2>
+                                <a href="#about" class="btn-get-started animated fadeInUp">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section><!-- #intro -->
+    <!-- About -->
+    <section id="about" class="home-section bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="section-heading">
+                        <h2>About us</h2>
+                        <div class="heading-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row wow fadeInUp">
+                <div class="col-md-6 about-img">
+                    <img src="~/Website/WebImages/About.png" alt="">
+                </div>
+                <div class="col-md-6 content">
+                    <h2>We’ve been building unique softwares, Web designing, and Web Services.</h2>
+                    <h3>We stay ahead with a technology that has proven industry expertise and continually brings new propositions to the utilities business.</h3>
+                    <p>
+                        RM Tech helps accelerate the evolution of an enterprise in achieving improved outcomes with technology-enabled and consumption-based services. We deliver you optimized business processes, smart applications leveraging our expertise in integrating software, business processes and professional services.
+                        RM Tech helps to achieve rapid delivery and deployment of services benefit from on-demand and scalable services and standardize.
+                        RM Tech evolves technology platform choices and services.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services -->
+    <section id="services" class="home-section bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="section-heading">
+                        <h2>RM Tech Services</h2>
+                        <div class="heading-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="carousel-service" class="service carousel slide">
+                        <!-- slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-offset-1 col-md-6">
+                                        <div class="wow bounceInLeft">
+                                            <p>We have been building client requested software products, platforms, and experiences.</p>
+                                            <p>We, at RM Tech, have built on our deep knowledge of software platforms, to enable clients to utilize their services in their business platform. This, coupled with our knowledge of industry domains, helps us to understand client exsisting requirements and their products.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-5">
+                                        <div class="screenshot wow bounceInRight">
+                                            <img src="~/Website/WebImages/abt.png" class="img-responsive" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Works -->
+    <section id="portfolio" class="home-section bg-gray">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="section-heading">
+                        <h2>RM Tech Domains</h2>
+                        <div class="heading-line"></div>
+                        <h4>Our domain consists of arena like E-Commerce, HealthCareManagement Systems and Financial Services</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="og-grid" class="og-grid">
+                        <li>
+                            <a href="#" data-largesrc="img/works/.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim, an movet interesset necessitatibus mea.">
+                                <img src="~/Website/WebImages/1.jpg" alt="" />
+                                
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-largesrc="img/works/2.jpg" data-title="Portfolio title" data-description="Mea an eros periculis dignissim, quo mollis nostrum elaboraret et. Id quem perfecto mel, no etiam perfecto qui. No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
+                                <img src="~/Website/WebImages/2.jpg" alt="" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-largesrc="img/works/3.jpg" data-title="Portfolio title" data-description="Vim ad persecuti appellantur. Eam ignota deterruisset eu, in omnis fierent convenire sed. Ne nulla veritus vel, liber euripidis in eos. Postea comprehensam vis in, detracto deseruisse mei ea. Ex sadipscing deterruisset concludaturque quo.">
+                                <img src="~/Website/WebImages/3.jpg" alt="img01" />
+                            </a>
+                        </li>
+                        @*<li>
+                            <a href="#" data-largesrc="img/works/4.jpg" data-title="Portfolio title" data-description="In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei. Pri consul detracto eu, solet nusquam accusam ex vim, an movet interesset necessitatibus mea.">
+                                <img src="img/works/thumbs/4.jpg" alt="img01" />
+                            </a>
+                        </li>*@
+                        <li>
+                            <a href="#" data-largesrc="img/works/5.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea">
+                                <img src="~/Website/WebImages/5.jpg" alt="img01" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-largesrc="img/works/6.jpg" data-title="Portfolio title" data-description="Id elit saepe pro. In atomorum constituam definitionem quo, at torquatos sadipscing eum, ut eum wisi meis mentitum. Probo feugiat ea duo. An usu platonem instructior, qui dolores inciderint ad. Te elit essent mea, vim ne atqui legimus invenire, ad dolor vitae sea.">
+                                <img src="~/Website/WebImages/6.jpg" alt="img01" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-largesrc="img/works/7.jpg" data-title="Portfolio title" data-description="Duo te dico volutpat, unum elit oblique per id. Ne duo mollis sapientem intellegebat. Per at augue vidisse percipit, pri vocibus assueverit interesset ut, no dolore luptatum incorrupte nec. In mentitum forensibus nec, nibh eripuit ut pri, tale illud voluptatum ut sea. Sed oratio repudiare ei, cum an magna labitur, eu atqui augue mei.">
+                                <img src="~/Website/WebImages/7.jpg" alt="img01" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-largesrc="img/works/8.jpg" data-title="Portfolio title" data-description="No nisl legere recusabo nam, ius an tale pericula evertitur, dicat phaedrum qui in. Usu numquam legendos in, voluptaria sadipscing ut vel. Eu eum mandamus volutpat gubergren, eos ad detracto nominati, ne eum idque elitr aliquam.">
+                                <img src="~/Website/WebImages/8.jpg" alt="img01" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="home-section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="section-heading">
+                        <h2>Contact us</h2>
+                        <div class="heading-line"></div>
+                        <p>
+                            If you have any question or just want to say 'hello' to RM Tech please fill out form below and
+                            we will be get in touch with you within 24 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <form action="" method="post" class="form-horizontal contactForm" role="form">
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
+                                       data-msg="Please enter at least 4 chars" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email"
+                                       data-msg="Please enter a valid email" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4"
+                                       data-msg="Please enter at least 8 chars of subject" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"
+                                          placeholder="Message"></textarea>
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <button type="submit" class="btn btn-theme btn-lg btn-block">Send message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bottom widget -->
+    <section id="bottom-widget" class="home-section bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-widget wow bounceInLeft">
+                        <i class="fa fa-map-marker fa-4x"></i>
+                        <h5>Main Office</h5>
+                        <p>
+                            #34 Khan Lateef Khan estate <br />opp IDBI Bank near LB Stadium 01 Hyderabad
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-widget wow bounceInUp">
+                        <i class="fa fa-phone fa-4x"></i>
+                        <h5>Call</h5>
+                        <p>
+                            +91 8247069196<br> +91 9885492878
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-widget wow bounceInRight">
+                        <i class="fa fa-envelope fa-4x"></i>
+                        <h5>Email us</h5>
+                        <p>
+                            rmtechinfo1@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>F
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>© 2019 www.rmtech.info. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- js -->
+    <script src="~/Website/jquery.js"></script>
+    <script src="~/Website/bootstrap.min.js"></script>
+    <script src="~/Website/wow.min.js"></script>
+    <script src="~/Website/jquery.scrollTo.min.js"></script>
+    <script src="~/Website/jquery.nav.js"></script>
+    <script src="~/Website/modernizr.custom.js"></script>
+    <script src="~/Website/grid.js"></script>
+    <script src="~/Website/stellar.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="~/Website/contactform.js"></script>
+    <script src="~/Website/custom.js"></script>
+    <!-- Template Custom Javascript File -->
+    
+</body>
+</html>

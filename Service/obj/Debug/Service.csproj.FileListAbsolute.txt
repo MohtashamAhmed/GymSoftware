@@ -17,3 +17,17 @@ C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Mvc
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Debug\Service.dll
 C:\Users\Mohtasham\Documents\GitHub\GymSoftware\Service\obj\Debug\Service.pdb
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Mvc.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\Google.Protobuf.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Razor.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\MySql.Data.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Mvc.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.Razor.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\RIYA OMPAL\Documents\GitHub\GymSoftware\Service\bin\Debug\System.Web.WebPages.Deployment.xml

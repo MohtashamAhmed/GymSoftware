@@ -267,6 +267,30 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Website\CssStylesheet\bootstrap.min.css" />
+    <Content Include="Website\bootstrap.min.js" />
+    <Content Include="Website\contactform.js" />
+    <Content Include="Website\CssStylesheet\default.css" />
+    <Content Include="Website\custom.js" />
+    <Content Include="Website\grid.js" />
+    <Content Include="Website\jquery.js" />
+    <Content Include="Website\jquery.nav.js" />
+    <Content Include="Website\jquery.scrollTo.min.js" />
+    <Content Include="Website\modernizr.custom.js" />
+    <Content Include="Website\stellar.js" />
+    <Content Include="Website\CssStylesheet\style.css" />
+    <Content Include="Website\WebImages\1.jpg" />
+    <Content Include="Website\WebImages\2.jpg" />
+    <Content Include="Website\WebImages\3.jpg" />
+    <Content Include="Website\WebImages\4.jpg" />
+    <Content Include="Website\WebImages\5.jpg" />
+    <Content Include="Website\WebImages\6.jpg" />
+    <Content Include="Website\WebImages\7.jpg" />
+    <Content Include="Website\WebImages\8.jpg" />
+    <Content Include="Website\WebImages\About.png" />
+    <Content Include="Website\WebImages\abt.png" />
+    <Content Include="Website\WebImages\Image1.jpg" />
+    <Content Include="Website\wow.min.js" />
     <None Include="Properties\PublishProfiles\Home.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
